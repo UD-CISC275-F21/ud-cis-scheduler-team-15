@@ -12,6 +12,9 @@ function App(): JSX.Element {
                 <p>
                     Edit <code>src/App.tsx</code> and save to reload.
                 </p>
+                <p>
+                    Justin Tenerelli
+                </p>
             </header>
         </div>
     );
