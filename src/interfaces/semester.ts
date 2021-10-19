@@ -1,4 +1,4 @@
-import { Course } from './course';
+import { Course } from "./course";
 
 export enum YearType {
     FirstYear = "First Year",
