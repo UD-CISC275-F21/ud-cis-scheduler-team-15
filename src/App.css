@@ -37,25 +37,29 @@
   }
 }
 
-.split {
-  display: flex;
-}
-
-.credits {
-  flex: 1;
-}
 
 table, th, td{
   border: 1px solid black;
 }
 
+.split{
+  display: flex;
+}
+
+.credits{
+  flex: 1;
+}
+
 .dotButton {
   flex: 1;
-  width: 20px;
-  height: 20px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 999;
   border: none;
   background: none
 }
+
 .dotButton:active {
   border: none;
   background: none
