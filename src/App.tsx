@@ -11,6 +11,7 @@ function App(): JSX.Element {
     const [course] = useState<Course>(COURSES[0].courses[0]);
     const [dotsStyle, setDotsStyle] = useState({display: "none"});
     const [changePromptVis, setChangePromptVis] = useState<boolean>(false);
+    setChangePromptVis(false);
 
     return (
         <div className="App">
