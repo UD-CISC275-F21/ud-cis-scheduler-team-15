@@ -12,6 +12,7 @@ function App(): JSX.Element {
 
     return (
         <div className="App">
+            <p>UD CIS Scheduler</p>
             <CourseViewer course={course}></CourseViewer>
         </div>
     );
