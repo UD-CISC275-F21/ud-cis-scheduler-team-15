@@ -9,11 +9,13 @@ import { Course } from "./interfaces/course";
 function App(): JSX.Element {
     // const [semester] = useState<Semester>(COURSES[0] as Semester);
     const [course] = useState<Course>(COURSES[0].courses[0]);
+    const [dotsStyle, setDotsStyle] = useState({display: "none"});
+    const [changePromptVis, setChangePromptVis] = useState<boolean>(false);
 
     return (
         <div className="App">
             <p>UD CIS Scheduler</p>
-            <CourseViewer course={course}></CourseViewer>
+            <CourseViewer course={course} dotsStyle={dotsStyle} setDotsStyle={setDotsStyle} setChangePromptVis={setChangePromptVis}></CourseViewer>
         </div>
     );
 }
