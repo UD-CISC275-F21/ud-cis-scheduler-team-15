@@ -1,0 +1,27 @@
+[
+    {
+      "name": "CISC",
+      "number": 275,
+      "credits": 3
+    },
+    {
+      "name": "CISC",
+      "number": 303,
+      "credits": 3
+    },
+    {
+      "name": "CISC",
+      "number": 361,
+      "credits": 3
+    },
+    {
+      "name": "CISC",
+      "number": 372,
+      "credits": 3
+    },
+    {
+      "name": "GEOL",
+      "number": 107,
+      "credits": 4
+    }
+  ]

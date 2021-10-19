@@ -1,20 +1,17 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import React, { useState } from "react";
+import COURSES from "./assets/courses.json";
+import { CourseViewer } from "./components/CourseViewer";
+import { TableViewer } from "./components/TableViewer";
+import { Course } from "./interfaces/course";
 
 function App(): JSX.Element {
+    const [course] = useState<Course>(COURSES[0]);
+
     return (
         <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                UD CIS Scheduler
-                <p>Josh Watson </p>
-                <p>Justin Tenerelli</p>
-                <p>Alex Rusin</p>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
-            </header>
+            <CourseViewer course={course}></CourseViewer>
+            <TableViewer></TableViewer>
         </div>
     );
 }
