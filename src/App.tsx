@@ -5,6 +5,7 @@ import { CourseViewer } from "./components/CourseViewer";
 // import { SemesterViewer } from "./components/SemesterViewer";
 import { Course } from "./interfaces/course";
 // import { Semester } from "./interfaces/semester";
+import {Welcome} from "./components/Welcome";
 
 function App(): JSX.Element {
     // const [semester] = useState<Semester>(COURSES[0] as Semester);
@@ -12,11 +13,13 @@ function App(): JSX.Element {
     const [dotsStyle, setDotsStyle] = useState({display: "none"});
     const [changePromptVis, setChangePromptVis] = useState<boolean>(false);
     setChangePromptVis(false);
+    const [visible, setVisible] = useState<boolean>(true);
 
     return (
         <div className="App">
             <p>UD CIS Scheduler</p>
             <CourseViewer course={course} dotsStyle={dotsStyle} setDotsStyle={setDotsStyle} setChangePromptVis={setChangePromptVis}></CourseViewer>
+            <Welcome visible = {visible} setVisible = {setVisible}></Welcome>
         </div>
     );
 }
