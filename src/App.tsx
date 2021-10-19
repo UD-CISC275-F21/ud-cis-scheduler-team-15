@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 
 function App(): JSX.Element {
-    const [visible, setVisible] = useState<boolean>(false);
+    const [visible, setVisible] = useState<boolean>(true);
     return (
         <div className="App">
             <header className="App-header">
@@ -17,8 +17,8 @@ function App(): JSX.Element {
                     Edit <code>src/App.tsx</code> and save to reload.
                 </p>
             </header>
-            <Welcome></Welcome>
-        </div>
+            <Welcome visible = {visible} setVisible = {setVisible}></Welcome>
+        </div> 
     );
 }
 
