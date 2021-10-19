@@ -1,3 +1,4 @@
+import React from "react";
 import {Modal} from "react-bootstrap";
 export function Welcome({visible, setVisible}: {visible: boolean, setVisible: (b: boolean) => void}): JSX.Element {
     const hide = () => setVisible(false);
