@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import {Welcome} from "./components/Welcome";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 function App(): JSX.Element {
+    const [visible, setVisible] = useState<boolean>(false);
     return (
         <div className="App">
             <header className="App-header">
@@ -13,6 +17,7 @@ function App(): JSX.Element {
                     Edit <code>src/App.tsx</code> and save to reload.
                 </p>
             </header>
+            <Welcome></Welcome>
         </div>
     );
 }
