@@ -1,9 +1,8 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import { Semester } from "../interfaces/semester";
-import { CourseViewer } from "./CourseViewer";
+// import { CourseViewer } from "./CourseViewer";
 
-export function SemesterViewer({semester}: {semester: Semester}): JSX.Element {
+export function SemesterViewer(/*{semester}: {semester: Semester}*/): JSX.Element {
     return (
         <Table striped={true} bordered hover>
             <thead>
