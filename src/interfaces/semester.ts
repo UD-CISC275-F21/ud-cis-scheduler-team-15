@@ -12,8 +12,8 @@ export enum SemesterType {
     Spring = "Spring"
 }
 
-export interface Table {
-    Year: YearType
-    Semester: SemesterType
-    Head: Course
+export interface Semester {
+    year: YearType
+    semester: SemesterType
+    courses: Course[]
 }

@@ -2,16 +2,18 @@ import "./App.css";
 import React, { useState } from "react";
 import COURSES from "./assets/courses.json";
 import { CourseViewer } from "./components/CourseViewer";
-import { TableViewer } from "./components/TableViewer";
+import { SemesterViewer } from "./components/SemesterViewer";
 import { Course } from "./interfaces/course";
+import { Semester } from "./interfaces/semester";
 
 function App(): JSX.Element {
-    const [course] = useState<Course>(COURSES[0]);
+    const [semester, setSemester] = useState<Semester>(COURSES[0] as Semester);
+    const [course, setCourse] = useState<Course>(COURSES[0].courses[0]);
 
     return (
         <div className="App">
+            <SemesterViewer semester={semester}></SemesterViewer>
             <CourseViewer course={course}></CourseViewer>
-            <TableViewer></TableViewer>
         </div>
     );
 }

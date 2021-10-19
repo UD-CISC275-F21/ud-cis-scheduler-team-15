@@ -1,27 +1,66 @@
 [
-    {
-      "name": "CISC",
-      "number": 275,
-      "credits": 3
-    },
-    {
-      "name": "CISC",
-      "number": 303,
-      "credits": 3
-    },
-    {
-      "name": "CISC",
-      "number": 361,
-      "credits": 3
-    },
-    {
-      "name": "CISC",
-      "number": 372,
-      "credits": 3
-    },
-    {
-      "name": "GEOL",
-      "number": 107,
-      "credits": 4
-    }
-  ]
+  {
+    "year": "First Year",
+    "semester": "Fall",
+    "courses":
+    [
+      {
+        "name": "CISC",
+        "number": 275,
+        "credits": 3
+      },
+      {
+        "name": "CISC",
+        "number": 303,
+        "credits": 3
+      },
+      {
+        "name": "CISC",
+        "number": 361,
+        "credits": 3
+      },
+      {
+        "name": "CISC",
+        "number": 372,
+        "credits": 3
+      },
+      {
+        "name": "GEOL",
+        "number": 107,
+        "credits": 4
+      }
+    ]
+  },
+  {
+    "year": "First Year",
+    "semester": "Spring",
+    "courses":
+    [
+      {
+        "name": "AFRA",
+        "number": 110,
+        "credits": 3
+      },
+      {
+        "name": "CISC",
+        "number": 320,
+        "credits": 3
+      },
+      {
+        "name": "CISC",
+        "number": 361,
+        "credits": 3
+      },
+      {
+        "name": "GEOL",
+        "number": 110,
+        "credits": 4
+      },
+      {
+        "name": "MATH",
+        "number": 205,
+        "credits": 4
+      }
+    ]
+  }
+]
