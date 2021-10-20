@@ -10,6 +10,14 @@ export function ChangeData({course, setCourse, visible, setVisible}:
     }): JSX.Element{
 
     const hide = () => setVisible(false);
+    function update():void{
+        const number = document.getElementById("numberUpdate") as HTMLInputElement;
+        const name  = document.getElementById("nameUpdate") as HTMLInputElement;
+        const credits = document.getElementById("numberCredits") as HTMLInputElement
+        course.number = number.value;
+        course.name = name.value;
+        course.credits = Number(credits.value);
+    }
     return(
         <Modal show={visible} onHide = {hide}>
             <Modal.Header closeButton>
@@ -19,16 +27,17 @@ export function ChangeData({course, setCourse, visible, setVisible}:
             <Modal.Body>
                 <div>
                     Edit Course Number: 
-                    <input></input>
+                    <input id="numberUpdate"></input>
                 </div>
                 <div>
                     Edit Course Name: 
-                    <input></input>
+                    <input id="nameUpdate"></input>
                 </div>
                 <div>
                     Edit Credits: 
-                    <input></input>
+                    <input id="creditsUpdate" type="number"></input>
                 </div>
+                <button>Save Changes</button>
             </Modal.Body>
         </Modal>
     );     
