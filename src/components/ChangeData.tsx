@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React from "react";
 import {Modal} from "react-bootstrap";
 import { Course } from "../interfaces/course";
 export function ChangeData({course, setCourse, visible, setVisible}:
@@ -8,19 +8,15 @@ export function ChangeData({course, setCourse, visible, setVisible}:
     visible: boolean;
     setVisible: (visible: boolean)=>void;
     }): JSX.Element{
-    const [num, setNum] = useState<string>(course.number);
-    const [name, setName] = useState<string>(course.name);
-    const [credits, setCredits] = useState<number>(course.credits);
 
     const hide = () => setVisible(false);
+
     function update():void{
         const numberHTML = document.getElementById("numberUpdate") as HTMLInputElement;
         const nameHTML  = document.getElementById("nameUpdate") as HTMLInputElement;
         const creditsHTML = document.getElementById("creditsUpdate") as HTMLInputElement;
-        setNum(numberHTML.value);
-        setName(nameHTML.value);
-        setCredits(Number(creditsHTML.value));
-        setCourse({number: num, name: name, credits: credits});
+        setCourse({number:numberHTML.value, name: nameHTML.value, credits: Number(creditsHTML.value)});
+        hide();
     }
     return(
         <Modal show={visible} onHide = {hide}>
@@ -31,15 +27,15 @@ export function ChangeData({course, setCourse, visible, setVisible}:
             <Modal.Body>
                 <div>
                     Edit Course Number: 
-                    <input id="numberUpdate" type="text" defaultValue={num}></input>
+                    <input id="numberUpdate" type="text" defaultValue={course.number}></input>
                 </div>
                 <div>
                     Edit Course Name: 
-                    <input id="nameUpdate" defaultValue={name}></input>
+                    <input id="nameUpdate" defaultValue={course.name}></input>
                 </div>
                 <div>
                     Edit Credits: 
-                    <input id="creditsUpdate" type="number" defaultValue={credits}></input>
+                    <input id="creditsUpdate" type="number" defaultValue={course.credits}></input>
                 </div>
                 <button onClick={() => update()}>Save Changes</button>
             </Modal.Body>
