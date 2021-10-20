@@ -13,18 +13,15 @@ function App(): JSX.Element {
     const [course, setCourse] = useState<Course>(COURSES[0].courses[0]);
     const [dotsStyle, setDotsStyle] = useState({display: "none"});
     const [changePromptVis, setChangePromptVis] = useState<boolean>(false);
-    if (changePromptVis){
-        setChangePromptVis(false);
-    }       
-
     const [visible, setVisible] = useState<boolean>(true);
+    console.log(changePromptVis);
 
     return (
         <div className="App">
             <p>UD CIS Scheduler</p>
+            <ChangeData course={course} setCourse={setCourse} visible={changePromptVis} setVisible={setChangePromptVis}></ChangeData>
             <CourseViewer course={course} dotsStyle={dotsStyle} setDotsStyle={setDotsStyle} setChangePromptVis={setChangePromptVis}></CourseViewer>
             <Welcome visible = {visible} setVisible = {setVisible}></Welcome>
-            <ChangeData course={course} setCourse={setCourse} visible={changePromptVis} setVisible={setChangePromptVis}></ChangeData>
         </div>
     );
 }

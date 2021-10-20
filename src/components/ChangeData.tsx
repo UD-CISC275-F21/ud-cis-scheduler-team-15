@@ -8,15 +8,17 @@ export function ChangeData({course, setCourse, visible, setVisible}:
     visible: boolean;
     setVisible: (visible: boolean)=>void;
     }): JSX.Element{
-        return(
-            <Modal show={visible} onHide = {setVisible(false)}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Edit Course Info</Modal.Title>
-                </Modal.Header>
-        
-                <Modal.Body>
-                    <div>Edits</div>
-                </Modal.Body>
-            </Modal>
-        )     
-    }
+
+    const hide = () => setVisible(false);
+    return(
+        <Modal show={visible} onHide = {hide}>
+            <Modal.Header closeButton>
+                <Modal.Title>Edit Course Info</Modal.Title>
+            </Modal.Header>
+    
+            <Modal.Body>
+                <div>Edits</div>
+            </Modal.Body>
+        </Modal>
+    );     
+}
