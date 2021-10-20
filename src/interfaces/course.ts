@@ -1,5 +1,5 @@
 export interface Course {
-    name: string
     number: string
+    name: string
     credits: number
 }

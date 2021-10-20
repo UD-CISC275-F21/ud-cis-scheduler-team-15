@@ -21,8 +21,8 @@ export function CourseViewer({course, dotsStyle, setDotsStyle, setChangePromptVi
             }}>
             <tbody>
                 <tr>
-                    <td>{course.name}</td>
                     <td>{course.number}</td>
+                    <td>{course.name}</td>
                     <td className = "split">
                         <div className = "credits">{course.credits}</div>
                         <button className = "dotButton" style = {dotsStyle} onClick = {()=>setChangePromptVis(true)}>

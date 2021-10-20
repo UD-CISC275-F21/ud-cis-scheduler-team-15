@@ -5,28 +5,28 @@
     "courses":
     [
       {
-        "number": "Introduction to Software Engineering",
-        "name": "CISC275",
+        "number": "CISC275",
+        "name": "Introduction to Software Engineering",
         "credits": 3
       },
       {
-        "name": "DESCRIPTION",
         "number": "CISC303",
+        "name": "DESCRIPTION",
         "credits": 3
       },
       {
-        "name": "DESCRIPTION",
         "number": "CISC361",
+        "name": "DESCRIPTION",
         "credits": 3
       },
       {
-        "name": "DESCRIPTION",
         "number": "CISC372",
+        "name": "DESCRIPTION",
         "credits": 3
       },
       {
-        "name": "DESCRIPTION",
         "number": "GEOL107",
+        "name": "DESCRIPTION",
         "credits": 4
       }
     ]
@@ -37,28 +37,28 @@
     "courses":
     [
       {
-        "name": "DESCRIPTION",
         "number": "AFRA110",
+        "name": "DESCRIPTION",
         "credits": 3
       },
       {
-        "name": "DESCRIPTION",
         "number": "CISC320",
+        "name": "DESCRIPTION",
         "credits": 3
       },
       {
-        "name": "DESCRIPTION",
         "number": "CISC361",
+        "name": "DESCRIPTION",
         "credits": 3
       },
       {
-        "name": "DESCRIPTION",
         "number": "GEOL110",
+        "name": "DESCRIPTION",
         "credits": 4
       },
       {
-        "name": "DESCRIPTION",
         "number": "MATH205",
+        "name": "DESCRIPTION",
         "credits": 4
       }
     ]
