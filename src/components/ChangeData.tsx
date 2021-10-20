@@ -13,10 +13,10 @@ export function ChangeData({course, setCourse, visible, setVisible}:
     function update():void{
         const number = document.getElementById("numberUpdate") as HTMLInputElement;
         const name  = document.getElementById("nameUpdate") as HTMLInputElement;
-        const credits = document.getElementById("numberCredits") as HTMLInputElement
-        course.number = number.value;
-        course.name = name.value;
-        course.credits = Number(credits.value);
+        const credits = document.getElementById("creditsUpdate") as HTMLInputElement;
+        console.log(credits);
+        const tempCourse = {number:number.value, name:name.value, credits:credits.valueAsNumber};
+        setCourse(tempCourse);
     }
     return(
         <Modal show={visible} onHide = {hide}>
@@ -37,7 +37,7 @@ export function ChangeData({course, setCourse, visible, setVisible}:
                     Edit Credits: 
                     <input id="creditsUpdate" type="number"></input>
                 </div>
-                <button>Save Changes</button>
+                <button onClick={() => update()}>Save Changes</button>
             </Modal.Body>
         </Modal>
     );     
