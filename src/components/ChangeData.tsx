@@ -17,7 +17,18 @@ export function ChangeData({course, setCourse, visible, setVisible}:
             </Modal.Header>
     
             <Modal.Body>
-                <div>Edits</div>
+                <div>
+                    Edit Course Number: 
+                    <input></input>
+                </div>
+                <div>
+                    Edit Course Name: 
+                    <input></input>
+                </div>
+                <div>
+                    Edit Credits: 
+                    <input></input>
+                </div>
             </Modal.Body>
         </Modal>
     );     
