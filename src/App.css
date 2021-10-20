@@ -94,3 +94,24 @@ table, th, td{
   top: 0 px;
   right: 0 px;
 }
+
+.dataEditorLabel{
+  width: 100%;
+  text-align: left;
+}
+
+.dataInput{
+  width: 100%;
+  text-align: left;
+}
+
+.dataInputCred{
+  width: 10%;
+  text-align: left;
+}
+
+.saveChanges{
+  position: relative;
+  width: 30%;
+  left: 35%; 
+}

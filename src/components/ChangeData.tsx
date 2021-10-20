@@ -25,19 +25,21 @@ export function ChangeData({course, setCourse, visible, setVisible}:
             </Modal.Header>
     
             <Modal.Body>
-                <div>
-                    Edit Course Number: 
-                    <input id="numberUpdate" type="text" defaultValue={course.number}></input>
+                <div className="dataEditorLabel">
+                    <strong>Edit Course Number:</strong>
+                    <input className="dataInput" id="numberUpdate" type="text" defaultValue={course.number}></input>
                 </div>
-                <div>
-                    Edit Course Name: 
-                    <input id="nameUpdate" defaultValue={course.name}></input>
+                <div className="dataEditorLabel">
+                    <strong>Edit Course Name:</strong>
+                    <input className="dataInput" id="nameUpdate" defaultValue={course.name}></input>
                 </div>
-                <div>
-                    Edit Credits: 
-                    <input id="creditsUpdate" type="number" defaultValue={course.credits}></input>
+                <div className="dataEditorLabel">
+                    <strong>Edit Credits:</strong>
+                    <div>
+                        <input className="dataInputCred" id="creditsUpdate" type="number" defaultValue={course.credits}></input>
+                    </div>
                 </div>
-                <button onClick={() => update()}>Save Changes</button>
+                <button className="saveChanges" onClick={() => update()}>Save Changes</button>
             </Modal.Body>
         </Modal>
     );     
