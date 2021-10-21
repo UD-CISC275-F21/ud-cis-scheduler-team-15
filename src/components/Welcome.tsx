@@ -10,7 +10,7 @@ export function Welcome({visible, setVisible}: {visible: boolean, setVisible: (b
             </Modal.Header>
       
             <Modal.Body>
-                <p>This is a website to help students visualize and plan out there schedule </p>
+                <p>This web app is designed to help you plan out your course schedule in order to complete your CIS Schedule.</p>
             </Modal.Body>
         </Modal>
     );
