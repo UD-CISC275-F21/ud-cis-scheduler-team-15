@@ -14,6 +14,6 @@ export enum SemesterType {
 
 export interface Semester {
     year: YearType
-    semester: SemesterType
+    term: SemesterType
     courses: Course[]
 }

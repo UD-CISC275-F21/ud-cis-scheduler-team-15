@@ -1,7 +1,7 @@
 [
   {
     "year": "First Year",
-    "semester": "Fall",
+    "term": "Fall",
     "courses":
     [
       {
@@ -33,7 +33,7 @@
   },
   {
     "year": "First Year",
-    "semester": "Spring",
+    "term": "Spring",
     "courses":
     [
       {
