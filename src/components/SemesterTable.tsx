@@ -3,6 +3,7 @@ import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
 import { CourseViewer } from "./CourseViewer";
 import React, { useState } from "react";
+import { SemesterMenu } from "./SemesterMenu";
 
 export function SemesterTable({sem_index, plan, setPlan}:
     {sem_index: number;
@@ -34,7 +35,8 @@ export function SemesterTable({sem_index, plan, setPlan}:
                     </button>
                 </td>
             </table>
-            
+            <SemesterMenu sem_index={sem_index} plan={plan} setPlan={setPlan} semMenuVis={changePromptVis} setSemMenuVis={setChangePromptVis}></SemesterMenu>
+
             <Table striped={true} bordered>
                 <thead>
                     <tr>
