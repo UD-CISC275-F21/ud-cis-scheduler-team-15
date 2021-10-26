@@ -2,23 +2,41 @@ import { Table } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
 import { CourseViewer } from "./CourseViewer";
-import React from "react";
+import React, { useState } from "react";
+import { SemesterMenu } from "./SemesterMenu";
 
 export function SemesterTable({sem_index, plan, setPlan}:
     {sem_index: number;
     plan: Semester[];
     setPlan: (plan: Semester[])=>void}):
     JSX.Element{
+
+    const [dotsStyle, setDotsStyle] = useState({display: "none"});
+    const [changePromptVis, setChangePromptVis] = useState<boolean>(false);
+
     return (
         <div className = "SemesterTable">
-            <table className="SemesterHeader">
+            <table // Citation: https://stackoverflow.com/questions/61126014/how-to-show-button-while-hover-over-box-using-react
+                onMouseEnter={() => {
+                    setDotsStyle({display: "block"});
+                }}
+                onMouseLeave={() => {
+                    setDotsStyle({display: "none"});
+                }} className="SemesterHeader">
                 <td className="yearLabel">
                     <strong>{plan[sem_index].year}</strong>
                 </td>
-                <td className="semLabel">
-                    <strong>{plan[sem_index].semester}</strong>
+                <td className = "split">
+                    <strong className="semLabel">{plan[sem_index].semester}</strong>
+                    <button className = "dotButton" style = {dotsStyle} onClick = {()=>setChangePromptVis(true)}>
+                        <div className = "dot"></div>
+                        <div className = "dot"></div>
+                        <div className = "dot"></div>
+                    </button>
                 </td>
             </table>
+            <SemesterMenu sem_index={sem_index} plan={plan} setPlan={setPlan} semMenuVis={changePromptVis} setSemMenuVis={setChangePromptVis}></SemesterMenu>
+
             <Table striped={true} bordered>
                 <thead>
                     <tr>
