@@ -21,7 +21,7 @@ export function SemesterViewer({semester, setSemester}:
     const [dotsStyle, setDotsStyle] = useState({display: "none"});
     const [changePromptVis, setChangePromptVis] = useState<boolean>(false);
     return (
-        <div>
+        <div className="semesterTable">
             <Table striped={true} bordered hover>
                 <thead>
                     <SemesterHeader></SemesterHeader>

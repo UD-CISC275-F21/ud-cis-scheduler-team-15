@@ -22,7 +22,7 @@ export function CourseViewer({index, semester, setSemester}:
     
     return (
         <div>
-            <Table striped={true} bordered hover
+            <Table className = "courseViewer" striped={true} bordered hover
                 // Citation: https://stackoverflow.com/questions/61126014/how-to-show-button-while-hover-over-box-using-react
                 onMouseEnter={() => {
                     setDotsStyle({display: "block"});
@@ -32,8 +32,8 @@ export function CourseViewer({index, semester, setSemester}:
                 }}>
                 <tbody>
                     <tr>
-                        <td>{semester.courses[index].number}</td>
-                        <td>{semester.courses[index].name}</td>
+                        <td className="courseNum">{semester.courses[index].number}</td>
+                        <td className="courseName">{semester.courses[index].name}</td>
                         <td className = "split">
                             <div className = "credits">{semester.courses[index].credits}</div>
                             <button className = "dotButton" style = {dotsStyle} onClick = {()=>setChangePromptVis(true)}>
