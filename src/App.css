@@ -145,3 +145,13 @@ table, th, td{
   width:50%;
   border:none;
 }
+
+.saveChanges{
+  position: relative;
+  left: 20%;
+}
+
+.deleteCourse{
+  position: relative;
+  left: 30%;
+}
