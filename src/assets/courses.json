@@ -62,5 +62,37 @@
         "credits": 4
       }
     ]
+  },
+  {
+    "year": "Second Year",
+    "semester": "Fall",
+    "courses":
+    [
+      {
+        "number": "AFRA110",
+        "name": "DESCRIPTION",
+        "credits": 3
+      },
+      {
+        "number": "CISC320",
+        "name": "DESCRIPTION",
+        "credits": 3
+      },
+      {
+        "number": "CISC361",
+        "name": "DESCRIPTION",
+        "credits": 3
+      },
+      {
+        "number": "GEOL110",
+        "name": "DESCRIPTION",
+        "credits": 4
+      },
+      {
+        "number": "MATH205",
+        "name": "DESCRIPTION",
+        "credits": 4
+      }
+    ]
   }
 ]
