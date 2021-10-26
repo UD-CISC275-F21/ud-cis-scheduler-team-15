@@ -9,14 +9,15 @@ export function SemesterMenu({sem_index, plan, setPlan, semMenuVis, setSemMenuVi
     semMenuVis: boolean,
     setSemMenuVis: (semMenuVis: boolean)=>void}
 ):JSX.Element{
-    
-    const hide = () => setSemMenuVis(false);
 
+    const hide = () => setSemMenuVis(false);
+/*
     function setSemester(s:Semester):void{
         const temp_plan: Semester[] = plan;
         temp_plan[sem_index] = s;
         setPlan(temp_plan);           
     }
+    */
 
     return(
         <Modal show={semMenuVis} onHide = {hide}>
