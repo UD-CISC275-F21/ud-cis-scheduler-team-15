@@ -2,6 +2,7 @@ import { Table } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
 import { CourseViewer } from "./CourseViewer";
+import React from "react";
 
 export function SemesterTable({sem_index, plan, setPlan}:
     {sem_index: number;
