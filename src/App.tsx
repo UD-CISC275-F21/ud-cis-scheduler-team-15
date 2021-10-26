@@ -4,7 +4,7 @@ import COURSES from "./assets/courses.json";
 import { Course } from "./interfaces/course";
 import { Semester } from "./interfaces/semester";
 import {Welcome} from "./components/Welcome";
-import { CoursesTable } from "./components/CoursesTable";
+import { SemesterTable } from "./components/SemesterTable";
 
 function App(): JSX.Element {
     const [semester0, setSemester0] = useState<Semester>(COURSES[0] as Semester);
@@ -14,7 +14,7 @@ function App(): JSX.Element {
     return (
         <div className="App">
             <p>UD CIS Scheduler</p>
-            <CoursesTable semester={semester0} setSemester={setSemester0}></CoursesTable>
+            <SemesterTable semester={semester0} setSemester={setSemester0}></SemesterTable>
             <Welcome visible = {visible} setVisible = {setVisible}></Welcome>
         </div>
     );

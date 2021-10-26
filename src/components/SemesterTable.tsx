@@ -4,7 +4,7 @@ import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
 import { CourseViewer } from "./CourseViewer";
 
-export function CoursesTable({semester, setSemester}:
+export function SemesterTable({semester, setSemester}:
     {    semester: Semester;
     setSemester: (semester: Semester)=>void}):
     JSX.Element{
