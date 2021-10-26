@@ -10,6 +10,9 @@ export function SemesterMenu({sem_index, plan, setPlan, semMenuVis, setSemMenuVi
     setSemMenuVis: (semMenuVis: boolean)=>void}
 ):JSX.Element{
 
+    console.log(sem_index);
+    console.log(plan);
+    console.log(setPlan);
     const hide = () => setSemMenuVis(false);
     /*
     function setSemester(s:Semester):void{
