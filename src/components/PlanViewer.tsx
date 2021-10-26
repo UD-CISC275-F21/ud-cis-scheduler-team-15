@@ -10,29 +10,36 @@ export function PlanViewer({plan, setPlan}:
     
     return(<div>
         {plan.map((s:Semester, index:number) =>{
-            if(index%2 == 0){
-                try{
-                    return(
-                        <div className="YearTable" key={index}>
-                            <table className="YearTable">
-                                <tr>
-                                    <td className="Fall">
-                                        <SemesterTable sem_index={index} plan={plan} setPlan={setPlan}></SemesterTable>
-                                    </td>
-                                    <td className="Spring">
-                                        <SemesterTable sem_index={index+1} plan={plan} setPlan={setPlan}></SemesterTable>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    );
-                }catch(e){
-                    return(
-                        <div className={plan[index].semester} key={index}>
-                            <SemesterTable sem_index={index} plan={plan} setPlan={setPlan}></SemesterTable>
-                        </div>
-                    );
-                }
+            if(index%2 === 0 && index!=plan.length-1){
+                return(
+                    <div className="YearTable" key={index}>
+                        <table className="YearTable">
+                            <tr>
+                                <td className="Fall">
+                                    <SemesterTable sem_index={index} plan={plan} setPlan={setPlan}></SemesterTable>
+                                </td>
+                                <td className="Spring">
+                                    <SemesterTable sem_index={index+1} plan={plan} setPlan={setPlan}></SemesterTable>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                );
+            }
+            if(index%2 === 0 && index===plan.length-1){
+                return(
+                    <div className="YearTable" key={index}>
+                        <table className="YearTable">
+                            <tr>
+                                <td className="Fall">
+                                    <SemesterTable sem_index={index} plan={plan} setPlan={setPlan}></SemesterTable>
+                                </td>
+                                <td className="Spring">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                );
             }
         })}
     </div>

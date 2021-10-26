@@ -69,12 +69,12 @@
     "courses":
     [
       {
-        "number": "AFRA110",
-        "name": "DESCRIPTION",
+        "number": "CISC275",
+        "name": "Introduction to Software Engineering",
         "credits": 3
       },
       {
-        "number": "CISC320",
+        "number": "CISC303",
         "name": "DESCRIPTION",
         "credits": 3
       },
@@ -84,12 +84,12 @@
         "credits": 3
       },
       {
-        "number": "GEOL110",
+        "number": "CISC372",
         "name": "DESCRIPTION",
-        "credits": 4
+        "credits": 3
       },
       {
-        "number": "MATH205",
+        "number": "GEOL107",
         "name": "DESCRIPTION",
         "credits": 4
       }
