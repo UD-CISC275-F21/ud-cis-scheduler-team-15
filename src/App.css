@@ -119,3 +119,19 @@ table, th, td{
 .SemesterTable{
   width:50%;
 }
+
+.SemesterHeader{
+  table-layout: fixed;
+  min-width: 100%;
+  font-size: x-large;
+}
+
+.yearLabel{
+  width:50%;
+  border-right:none;
+}
+
+.semLabel{
+  width:50%;
+  border-left:none;
+}
