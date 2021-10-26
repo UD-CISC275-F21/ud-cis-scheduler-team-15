@@ -1,12 +1,10 @@
 import "./App.css";
 import React, { useState } from "react";
 import COURSES from "./assets/courses.json";
-import { CourseViewer } from "./components/CourseViewer";
-import { SemesterViewer } from "./components/SemesterViewer";
 import { Course } from "./interfaces/course";
 import { Semester } from "./interfaces/semester";
 import {Welcome} from "./components/Welcome";
-import { ChangeData } from "./components/ChangeData";
+import { CoursesTable } from "./components/CoursesTable";
 
 function App(): JSX.Element {
     const [semester0, setSemester0] = useState<Semester>(COURSES[0] as Semester);
@@ -16,7 +14,7 @@ function App(): JSX.Element {
     return (
         <div className="App">
             <p>UD CIS Scheduler</p>
-            <SemesterViewer semester={semester0} setSemester={setSemester0}></SemesterViewer>
+            <CoursesTable semester={semester0} setSemester={setSemester0}></CoursesTable>
             <Welcome visible = {visible} setVisible = {setVisible}></Welcome>
         </div>
     );

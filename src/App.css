@@ -45,7 +45,6 @@ table, th, td{
 .split{
   display: flex;
   position: relative;
-  width: 50px;
 }
 
 .credits{
@@ -117,13 +116,6 @@ table, th, td{
   left: 35%; 
 }
 
-.courseNum{
-  width:100px;
-}
-.courseName{
-  width:600px;
-}
-
-.semesterTable{
+.SemesterTable{
   width:50%;
 }
