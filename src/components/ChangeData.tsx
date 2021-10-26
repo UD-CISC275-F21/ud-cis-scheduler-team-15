@@ -18,6 +18,11 @@ export function ChangeData({course, setCourse, visible, setVisible}:
         setCourse({number:numberHTML.value, name: nameHTML.value, credits: Number(creditsHTML.value)});
         hide();
     }
+
+    function del():void{
+        console.log("delete");
+    }
+
     return(
         <Modal show={visible} onHide = {hide}>
             <Modal.Header closeButton>
@@ -40,6 +45,7 @@ export function ChangeData({course, setCourse, visible, setVisible}:
                     </div>
                 </div>
                 <button className="saveChanges" onClick={() => update()}>Save Changes</button>
+                <button className="deleteCourse" onClick={() => del()}>Delete Course</button>
             </Modal.Body>
         </Modal>
     );     
