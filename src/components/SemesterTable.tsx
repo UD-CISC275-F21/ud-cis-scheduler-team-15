@@ -4,18 +4,19 @@ import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
 import { CourseViewer } from "./CourseViewer";
 
-export function SemesterTable({semester, setSemester}:
-    {    semester: Semester;
-    setSemester: (semester: Semester)=>void}):
+export function SemesterTable({sem_index, plan, setPlan}:
+    {sem_index: number;
+    plan: Semester[];
+    setPlan: (plan: Semester[])=>void}):
     JSX.Element{
     return (
         <div className = "SemesterTable">
             <table className="SemesterHeader">
                 <td className="yearLabel">
-                    <strong>{semester.year}</strong>
+                    <strong>{plan[sem_index].year}</strong>
                 </td>
                 <td className="semLabel">
-                    <strong>{semester.semester}</strong>
+                    <strong>{plan[sem_index].semester}</strong>
                 </td>
             </table>
             <Table striped={true} bordered>
@@ -33,9 +34,9 @@ export function SemesterTable({semester, setSemester}:
                     </tr>
                 </thead>
                 <tbody>
-                    {semester.courses.map((c:Course, index:number) => { 
+                    {plan[sem_index].courses.map((c:Course, index:number) => { 
                         return (
-                            <CourseViewer key={index} index={index} semester={semester} setSemester={setSemester}></CourseViewer>
+                            <CourseViewer key={index} index={index} sem_index={sem_index} plan={plan} setPlan={setPlan}></CourseViewer>
                         );
                     }
                     )}
