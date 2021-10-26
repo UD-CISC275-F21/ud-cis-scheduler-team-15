@@ -26,9 +26,8 @@ export function SemesterViewer({semester, setSemester}:
                 <thead>
                     <SemesterHeader></SemesterHeader>
                 </thead>
-                <CoursesTable semester={semester} dotsStyle={dotsStyle} setDotsStyle={setDotsStyle} setChangePromptVis={setChangePromptVis}/>
+                <CoursesTable semester={semester} setSemester={setSemester}/>
             </Table>
-            <ChangeData course={semester.courses[0]} setCourse={setCourse} visible={changePromptVis} setVisible={setChangePromptVis} i={0}></ChangeData>
         </div>
     );
 }

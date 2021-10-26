@@ -11,10 +11,7 @@ import { ChangeData } from "./components/ChangeData";
 function App(): JSX.Element {
     const [semester0, setSemester0] = useState<Semester>(COURSES[0] as Semester);
     const [course, setCourse] = useState<Course>(COURSES[0].courses[0]);
-    const [dotsStyle, setDotsStyle] = useState({display: "none"});
-    const [changePromptVis, setChangePromptVis] = useState<boolean>(false);
     const [visible, setVisible] = useState<boolean>(true);
-    console.log(changePromptVis);
 
     return (
         <div className="App">

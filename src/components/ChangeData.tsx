@@ -4,7 +4,7 @@ import {Modal} from "react-bootstrap";
 import { Course } from "../interfaces/course";
 export function ChangeData({course, setCourse, visible, setVisible, i}:
     {course: Course;
-    setCourse: (i: number, course: Course)=>void;
+    setCourse: (course: Course)=>void;
     visible: boolean;
     setVisible: (visible: boolean)=>void;
     i: number
@@ -16,7 +16,7 @@ export function ChangeData({course, setCourse, visible, setVisible, i}:
         const numberHTML = document.getElementById("numberUpdate") as HTMLInputElement;
         const nameHTML  = document.getElementById("nameUpdate") as HTMLInputElement;
         const creditsHTML = document.getElementById("creditsUpdate") as HTMLInputElement;
-        setCourse(i, {number:numberHTML.value, name: nameHTML.value, credits: Number(creditsHTML.value)});
+        setCourse({number:numberHTML.value, name: nameHTML.value, credits: Number(creditsHTML.value)});
         hide();
     }
     return(
