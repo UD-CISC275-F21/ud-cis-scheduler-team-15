@@ -2,12 +2,11 @@
 import React from "react";
 import {Modal} from "react-bootstrap";
 import { Course } from "../interfaces/course";
-export function ChangeData({course, setCourse, visible, setVisible, i}:
+export function ChangeData({course, setCourse, visible, setVisible}:
     {course: Course;
     setCourse: (course: Course)=>void;
     visible: boolean;
     setVisible: (visible: boolean)=>void;
-    i: number
     }): JSX.Element{
 
     const hide = () => setVisible(false);

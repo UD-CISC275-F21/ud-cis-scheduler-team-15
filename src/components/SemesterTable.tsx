@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
