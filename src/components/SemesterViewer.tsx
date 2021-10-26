@@ -4,6 +4,7 @@ import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
 import { ChangeData } from "./ChangeData";
 import { CourseViewer } from "./CourseViewer";
+import { DisplayCourses } from "./DisplayCourses";
 import { SemesterHeader } from "./SemesterHeader";
 
 export function SemesterViewer({semester, setSemester}: 
@@ -26,9 +27,7 @@ export function SemesterViewer({semester, setSemester}:
                     <tr>
                         <SemesterHeader></SemesterHeader>
                     </tr>
-                    <tr>
-                        <CourseViewer course={semester.courses[0]} dotsStyle={dotsStyle} setDotsStyle={setDotsStyle} setChangePromptVis={setChangePromptVis}></CourseViewer>
-                    </tr>
+                    <DisplayCourses semester={semester} dotsStyle={dotsStyle} setDotsStyle={setDotsStyle} setChangePromptVis={setChangePromptVis}/>
                 </thead>
             </Table>
             <ChangeData course={semester.courses[0]} setCourse={setCourse} visible={changePromptVis} setVisible={setChangePromptVis} i={0}></ChangeData>
