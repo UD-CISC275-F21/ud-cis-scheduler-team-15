@@ -1,5 +1,6 @@
 import { Semester } from "../interfaces/semester";
 import { SemesterTable } from "./SemesterTable";
+import React from "react";
 
 export function PlanViewer({plan, setPlan}:
     {plan: Semester[];
