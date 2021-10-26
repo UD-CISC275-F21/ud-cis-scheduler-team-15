@@ -62,5 +62,37 @@
         "credits": 4
       }
     ]
+  },
+  {
+    "year": "Second Year",
+    "semester": "Fall",
+    "courses":
+    [
+      {
+        "number": "CISC275",
+        "name": "Introduction to Software Engineering",
+        "credits": 3
+      },
+      {
+        "number": "CISC303",
+        "name": "DESCRIPTION",
+        "credits": 3
+      },
+      {
+        "number": "CISC361",
+        "name": "DESCRIPTION",
+        "credits": 3
+      },
+      {
+        "number": "CISC372",
+        "name": "DESCRIPTION",
+        "credits": 3
+      },
+      {
+        "number": "GEOL107",
+        "name": "DESCRIPTION",
+        "credits": 4
+      }
+    ]
   }
 ]

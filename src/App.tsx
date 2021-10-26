@@ -4,17 +4,16 @@ import COURSES from "./assets/courses.json";
 import { Course } from "./interfaces/course";
 import { Semester } from "./interfaces/semester";
 import {Welcome} from "./components/Welcome";
-import { SemesterTable } from "./components/SemesterTable";
+import { PlanViewer } from "./components/PlanViewer";
 
 function App(): JSX.Element {
-    const [semester0, setSemester0] = useState<Semester>(COURSES[0] as Semester);
-    const [course, setCourse] = useState<Course>(COURSES[0].courses[0]);
+    const [plan, setPlan] = useState<Semester[]>(COURSES as Semester[]);
     const [visible, setVisible] = useState<boolean>(true);
 
     return (
         <div className="App">
             <p>UD CIS Scheduler</p>
-            <SemesterTable semester={semester0} setSemester={setSemester0}></SemesterTable>
+            <PlanViewer plan={plan} setPlan={setPlan}></PlanViewer>
             <Welcome visible = {visible} setVisible = {setVisible}></Welcome>
         </div>
     );

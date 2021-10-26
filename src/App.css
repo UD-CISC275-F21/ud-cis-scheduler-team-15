@@ -117,7 +117,7 @@ table, th, td{
 }
 
 .SemesterTable{
-  width:50%;
+  width:100%;
 }
 
 .SemesterHeader{
@@ -134,4 +134,20 @@ table, th, td{
 .semLabel{
   width:50%;
   border-left:none;
+}
+
+.YearTable{
+  table-layout: fixed;
+  min-width: 100%;
+  border: none;
+}
+
+.Fall{
+  width:50%;
+  border:none;
+}
+
+.Spring{
+  width:50%;
+  border:none;
 }
