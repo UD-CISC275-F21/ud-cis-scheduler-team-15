@@ -4,8 +4,9 @@ import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
 import { ChangeData } from "./ChangeData";
 
-export function CourseViewer({index, semester, setSemester}: 
-    {index: number;
+export function CourseViewer({key, index, semester, setSemester}: 
+    {key: number
+    index: number;
     semester: Semester;
     setSemester: (semester: Semester)=> void;
     }
@@ -21,31 +22,25 @@ export function CourseViewer({index, semester, setSemester}:
     }
     
     return (
-        <div>
-            <Table striped={true} bordered hover
-                // Citation: https://stackoverflow.com/questions/61126014/how-to-show-button-while-hover-over-box-using-react
-                onMouseEnter={() => {
-                    setDotsStyle({display: "block"});
-                }}
-                onMouseLeave={() => {
-                    setDotsStyle({display: "none"});
-                }}>
-                <tbody>
-                    <tr>
-                        <td>{semester.courses[index].number}</td>
-                        <td>{semester.courses[index].name}</td>
-                        <td className = "split">
-                            <div className = "credits">{semester.courses[index].credits}</div>
-                            <button className = "dotButton" style = {dotsStyle} onClick = {()=>setChangePromptVis(true)}>
-                                <div className = "dot"></div>
-                                <div className = "dot"></div>
-                                <div className = "dot"></div>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </Table>
+        <tr key={key}
+        // Citation: https://stackoverflow.com/questions/61126014/how-to-show-button-while-hover-over-box-using-react
+            onMouseEnter={() => {
+                setDotsStyle({display: "block"});
+            }}
+            onMouseLeave={() => {
+                setDotsStyle({display: "none"});
+            }}>
+            <td className="courseNum">{semester.courses[index].number}</td>
+            <td className="courseName">{semester.courses[index].name}</td>
+            <td className = "split">
+                <div className = "credits">{semester.courses[index].credits}</div>
+                <button className = "dotButton" style = {dotsStyle} onClick = {()=>setChangePromptVis(true)}>
+                    <div className = "dot"></div>
+                    <div className = "dot"></div>
+                    <div className = "dot"></div>
+                </button>
+            </td>
             <ChangeData course={semester.courses[index]} setCourse={setCourse} visible={changePromptVis} setVisible={setChangePromptVis} i={0}></ChangeData>
-        </div>
+        </tr>
     );
 }
