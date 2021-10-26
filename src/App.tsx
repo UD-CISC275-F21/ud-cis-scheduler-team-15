@@ -9,7 +9,7 @@ import {Welcome} from "./components/Welcome";
 import { ChangeData } from "./components/ChangeData";
 
 function App(): JSX.Element {
-    const [semester0] = useState<Semester>(COURSES[0] as Semester);
+    const [semester0, setSemester0] = useState<Semester>(COURSES[0] as Semester);
     const [course, setCourse] = useState<Course>(COURSES[0].courses[0]);
     const [dotsStyle, setDotsStyle] = useState({display: "none"});
     const [changePromptVis, setChangePromptVis] = useState<boolean>(false);
@@ -19,8 +19,7 @@ function App(): JSX.Element {
     return (
         <div className="App">
             <p>UD CIS Scheduler</p>
-            <ChangeData course={course} setCourse={setCourse} visible={changePromptVis} setVisible={setChangePromptVis}></ChangeData>
-            <SemesterViewer semester={semester0}></SemesterViewer>
+            <SemesterViewer semester={semester0} setSemester={setSemester0}></SemesterViewer>
             <Welcome visible = {visible} setVisible = {setVisible}></Welcome>
         </div>
     );
