@@ -42,7 +42,7 @@ export function CourseViewer({key, index, sem_index, plan, setPlan}:
                     <div className = "dot"></div>
                 </button>
             </td>
-            <ChangeData course={plan[sem_index].courses[index]} setCourse={setCourse} visible={changePromptVis} setVisible={setChangePromptVis} i={0}></ChangeData>
+            <ChangeData course={plan[sem_index].courses[index]} setCourse={setCourse} visible={changePromptVis} setVisible={setChangePromptVis}></ChangeData>
         </tr>
     );
 }
