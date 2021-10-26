@@ -11,7 +11,7 @@ export function SemesterMenu({sem_index, plan, setPlan, semMenuVis, setSemMenuVi
 ):JSX.Element{
 
     const hide = () => setSemMenuVis(false);
-/*
+    /*
     function setSemester(s:Semester):void{
         const temp_plan: Semester[] = plan;
         temp_plan[sem_index] = s;
