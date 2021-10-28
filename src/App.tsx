@@ -1,17 +1,20 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import React, { useState } from "react";
+import COURSES from "./assets/courses.json";
+import { Semester } from "./interfaces/semester";
+import {Welcome} from "./components/Welcome";
+import { PlanViewer } from "./components/PlanViewer";
 
 function App(): JSX.Element {
+    const [plan, setPlan] = useState<Semester[]>(COURSES as Semester[]);
+    const [visible, setVisible] = useState<boolean>(true);
+    console.log(plan[0].courses);
+
     return (
         <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                UD CIS Scheduler
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
-            </header>
+            <p>UD CIS Scheduler</p>
+            <PlanViewer plan={plan} setPlan={setPlan}></PlanViewer>
+            <Welcome visible = {visible} setVisible = {setVisible}></Welcome>
         </div>
     );
 }
