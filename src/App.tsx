@@ -19,7 +19,7 @@ function App(): JSX.Element {
         <div className="App">
             <p>UD CIS Scheduler</p>
             <AddSemesterModal addSemesterModal = {addSemesterModal} showAddSemesterModal = {showAddSemesterModal} addSemester = {addSemester}></AddSemesterModal>
-            <ControlPanel addSemesterModal= {addSemesterModal} showAddSemesterModal = {showAddSemesterModal}></ControlPanel>
+            <ControlPanel showAddSemesterModal = {showAddSemesterModal}></ControlPanel>
             <PlanViewer plan={plan} setPlan={setPlan}></PlanViewer>
             <Welcome visible = {visible} setVisible = {setVisible}></Welcome>
         </div>

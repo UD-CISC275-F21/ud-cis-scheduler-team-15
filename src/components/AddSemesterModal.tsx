@@ -2,9 +2,6 @@ import { useState } from "react";
 import { Button, Modal, ButtonGroup, Col, ToggleButton } from "react-bootstrap";
 import React from "react";
 import { Semester, SemesterType, YearType } from "../interfaces/semester";
-import { Course } from "../interfaces/course";
-import { CourseViewer } from "./CourseViewer";
-import  COURSES  from "../assets/courses.json";
 
 export function AddSemesterModal({addSemesterModal, showAddSemesterModal, addSemester}:
     {addSemesterModal: boolean, showAddSemesterModal: (b: boolean)=> void, addSemester: (s: Semester) => void}): JSX.Element {

@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import React from "react";
 
-export function ControlPanel({addSemesterModal, showAddSemesterModal}: 
-    {addSemesterModal: boolean, showAddSemesterModal: (b: boolean)=>void}): JSX.Element{
+export function ControlPanel({showAddSemesterModal}: 
+    {showAddSemesterModal: (b: boolean)=>void}): JSX.Element{
     function addSemester()  {
         showAddSemesterModal(true);
     }
