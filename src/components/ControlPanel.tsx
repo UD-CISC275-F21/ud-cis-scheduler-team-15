@@ -3,10 +3,13 @@ import { Button } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import React from "react";
 
-export function ControlPanel({addSemesterModal, setAddSemesterModal}: 
-    {addSemesterModal: boolean, setAddSemesterModal: (b: boolean)=>void}): JSX.Element{
+export function ControlPanel({addSemesterModal, showAddSemesterModal}: 
+    {addSemesterModal: boolean, showAddSemesterModal: (b: boolean)=>void}): JSX.Element{
+    function addSemester()  {
+        showAddSemesterModal(true);
+    }
     return<Row>
-        <Button className="semesterbutton">Add Semester</Button>
+        <Button onClick= {addSemester} className="semesterbutton">Add Semester</Button>
     </Row>;
 }
 
