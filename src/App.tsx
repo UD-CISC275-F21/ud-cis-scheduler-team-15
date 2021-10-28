@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import COURSES from "./assets/courses.json";
 import { Semester } from "./interfaces/semester";
-import {Welcome} from "./components/Welcome";
+import { Welcome } from "./components/Welcome";
 import { PlanViewer } from "./components/PlanViewer";
 import { ControlPanel} from "./components/ControlPanel";
 import { AddSemesterModal } from "./components/AddSemesterModal";
@@ -14,6 +14,7 @@ function App(): JSX.Element {
     function addSemester(newSemester: Semester){
         setPlan([...plan, newSemester]);
     }
+    console.log(plan[0].courses);
 
     return (
         <div className="App">
