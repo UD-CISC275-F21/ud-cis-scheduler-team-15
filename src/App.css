@@ -110,12 +110,6 @@ table, th, td{
   text-align: left;
 }
 
-.saveChanges{
-  position: relative;
-  width: 30%;
-  left: 35%; 
-}
-
 .SemesterTable{
   width:100%;
 }
@@ -150,4 +144,14 @@ table, th, td{
 .Spring{
   width:50%;
   border:none;
+}
+
+.saveChanges{
+  position: relative;
+  left: 20%;
+}
+
+.deleteCourse{
+  position: relative;
+  left: 30%;
 }
