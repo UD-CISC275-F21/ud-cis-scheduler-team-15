@@ -8,6 +8,7 @@ import { PlanViewer } from "./components/PlanViewer";
 function App(): JSX.Element {
     const [plan, setPlan] = useState<Semester[]>(COURSES as Semester[]);
     const [visible, setVisible] = useState<boolean>(true);
+    console.log(plan[0].courses);
 
     return (
         <div className="App">
