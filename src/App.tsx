@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import COURSES from "./assets/courses.json";
 import { Semester } from "./interfaces/semester";
-import {Welcome} from "./components/Welcome";
+import { Welcome } from "./components/Welcome";
 import { PlanViewer } from "./components/PlanViewer";
 
 function App(): JSX.Element {

@@ -110,6 +110,14 @@ table, th, td{
   text-align: left;
 }
 
+.addCourse{
+  position: relative;
+}
+
+.removeAllCourses{
+  position: relative;
+}
+
 .saveChanges{
   position: relative;
   width: 30%;
