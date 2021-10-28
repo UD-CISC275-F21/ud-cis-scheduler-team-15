@@ -12,13 +12,13 @@ function App(): JSX.Element {
     const [visible, setVisible] = useState<boolean>(true);
     const [addSemesterModal, showAddSemesterModal] = useState<boolean>(false);
     function addSemester(newSemester: Semester){
-        setPlan([...plan, newSemester])
+        setPlan([...plan, newSemester]);
     }
 
     return (
         <div className="App">
             <p>UD CIS Scheduler</p>
-            <AddSemesterModal addSemesterModal = {addSemesterModal} showAddSemesterModal = {showAddSemesterModal}></AddSemesterModal>
+            <AddSemesterModal addSemesterModal = {addSemesterModal} showAddSemesterModal = {showAddSemesterModal} addSemester = {addSemester}></AddSemesterModal>
             <ControlPanel addSemesterModal= {addSemesterModal} showAddSemesterModal = {showAddSemesterModal}></ControlPanel>
             <PlanViewer plan={plan} setPlan={setPlan}></PlanViewer>
             <Welcome visible = {visible} setVisible = {setVisible}></Welcome>
