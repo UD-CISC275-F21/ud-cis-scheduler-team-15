@@ -9,8 +9,8 @@ export function AddSemesterModal({addSemesterModal, showAddSemesterModal, addSem
     function saveSemester(){
         addSemester({year: yearType, semester: semesterType, courses: []});
     }
-    const [checked, setChecked] = useState(false);
-    const [radioValue, setRadioValue] = useState("1");
+    //const [checked, setChecked] = useState(false);
+    //const [radioValue, setRadioValue] = useState("1");
     const [yearType, setYearType] = useState<YearType>(YearType.FirstYear);
     const [semesterType, setSemesterType] = useState<SemesterType>(SemesterType.Fall);
     const radios = [
@@ -31,39 +31,43 @@ export function AddSemesterModal({addSemesterModal, showAddSemesterModal, addSem
             <Modal.Body>
                 <div><strong>Year of Semester</strong></div>
                 <ButtonGroup>
-                    {radios.map((radio, idx) => (
-                        <ToggleButton
-                            key={idx}
-                            id={`radio-${idx}`}
-                            type="radio"
-                            variant="secondary"
-                            name="radio"
-                            value={radio.value}
-                            checked={yearType === radio.value}
-                            onChange={(e) => setYearType((e.currentTarget.value) as YearType)}
-                        >
-                            {radio.name}
-                        </ToggleButton>
-                    ))}
+                    {radios.map(
+                        (radio, idx) => (
+                            <ToggleButton
+                                key={idx}
+                                id={`radio-${idx}`}
+                                type="radio"
+                                variant="secondary"
+                                name="radio"
+                                value={radio.value}
+                                checked={yearType === radio.value}
+                                onChange={(e) => setYearType((e.currentTarget.value) as YearType)}
+                            >
+                                {radio.name}
+                            </ToggleButton>
+                        )
+                    )}
                 </ButtonGroup>
             </Modal.Body>
             <Modal.Body>
                 <div><strong>Semester Season</strong></div>
                 <ButtonGroup>
-                    {radios2.map((radio, idx) => (
-                        <ToggleButton
-                            key={idx}
-                            id={`radio-${idx}`}
-                            type="radio"
-                            variant="secondary"
-                            name="radio"
-                            value={radio.value}
-                            checked={semesterType === radio.value}
-                            onChange={(e) => setSemesterType((e.currentTarget.value) as SemesterType)}
-                        >
-                            {radio.name}
-                        </ToggleButton>
-                    ))}
+                    {radios2.map(
+                        (radio, idx) => (
+                            <ToggleButton
+                                key={idx}
+                                id={`radio-${idx}`}
+                                type="radio"
+                                variant="secondary"
+                                name="radio"
+                                value={radio.value}
+                                checked={semesterType === radio.value}
+                                onChange={(e) => setSemesterType((e.currentTarget.value) as SemesterType)}
+                            >
+                                {radio.name}
+                            </ToggleButton>
+                        )
+                    )}
                 </ButtonGroup>
             </Modal.Body>
             <Modal.Footer>
