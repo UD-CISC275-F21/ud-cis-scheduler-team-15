@@ -9,9 +9,9 @@ import  COURSES  from "../assets/courses.json";
 export function AddSemesterModal({addSemesterModal, showAddSemesterModal, addSemester}:
     {addSemesterModal: boolean, showAddSemesterModal: (b: boolean)=> void, addSemester: (s: Semester) => void}): JSX.Element {
     const hide = () => showAddSemesterModal(false);
-    //function saveSemester(){
-    //     addSemester({year: yearType, semester: semesterType , courses: COURSES as Course[])});
-    //}
+    function saveSemester(){
+        addSemester({year: yearType, semester: semesterType, courses: []});
+    }
     const [checked, setChecked] = useState(false);
     const [radioValue, setRadioValue] = useState("1");
     const [yearType, setYearType] = useState<YearType>(YearType.FirstYear);
@@ -70,7 +70,7 @@ export function AddSemesterModal({addSemesterModal, showAddSemesterModal, addSem
                 </ButtonGroup>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="primary" /*onClick={saveSemester}*/>Save Changes</Button>
+                <Button variant="primary" onClick={saveSemester}>Save Changes</Button>
             </Modal.Footer>
         </Modal>
     </Col>;
