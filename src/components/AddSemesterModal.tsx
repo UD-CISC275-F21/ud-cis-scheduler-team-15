@@ -31,7 +31,7 @@ export function AddSemesterModal({addSemesterModal, showAddSemesterModal, addSem
             <Modal.Body>
                 <div><strong>Year of Semester</strong></div>
                 <ButtonGroup>
-                    {radios.map((radio, idx) => (
+                    {radios.map((radio, idx) => 
                         <ToggleButton
                             key={idx}
                             id={`radio-${idx}`}
@@ -44,14 +44,14 @@ export function AddSemesterModal({addSemesterModal, showAddSemesterModal, addSem
                         >
                             {radio.name}
                         </ToggleButton>
-                    ))}
+                    )}
                 </ButtonGroup>
             </Modal.Body>
             <Modal.Body>
                 <div><strong>Semester Season</strong></div>
                 <ButtonGroup>
                     {radios2.map(
-                        (radio, idx) => (
+                        (radio, idx) => 
                             <ToggleButton
                                 key={idx}
                                 id={`radio-${idx}`}
@@ -64,7 +64,7 @@ export function AddSemesterModal({addSemesterModal, showAddSemesterModal, addSem
                             >
                                 {radio.name}
                             </ToggleButton>
-                        )
+                        
                     )}
                 </ButtonGroup>
             </Modal.Body>
