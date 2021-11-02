@@ -25,9 +25,6 @@ function App(): JSX.Element {
                 yearType = YearType.FourthYear;
             }
         }
-        console.log(plan[plan.length - 1].year);
-        console.log(yearType);
-        console.log(semesterType);
         const newSemester = {year: yearType, semester: semesterType, courses: []};
         setPlan([...plan, newSemester]);
     }
