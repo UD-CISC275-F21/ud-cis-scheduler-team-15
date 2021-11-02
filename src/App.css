@@ -155,3 +155,7 @@ table, th, td{
   position: relative;
   left: 30%;
 }
+
+.AuditLabel{
+  font-size: x-large;
+}

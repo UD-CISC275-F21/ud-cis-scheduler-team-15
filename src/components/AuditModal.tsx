@@ -51,8 +51,8 @@ export function AuditModal({plan, visible, setVisible}:
                 <Modal.Title>Schedule Audit</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <div>Core Courses Missing:</div>
-                <Table className="Audit Table" striped={true} bordered>
+                <strong className="AuditLabel">Core Courses Missing:</strong>
+                <Table className="AuditTable" striped={true} bordered>
                     <thead>
                         <tr>
                             <th className="text-center">
