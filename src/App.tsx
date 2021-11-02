@@ -13,7 +13,10 @@ function App(): JSX.Element {
     function addSemester(){
         let yearType = YearType.FirstYear;
         let semesterType = SemesterType.Fall;
-        if (plan[plan.length - 1].semester === "Fall") {
+        if(plan.length === 0){
+            yearType = YearType.FirstYear;
+            semesterType = SemesterType.Fall;
+        }else if (plan[plan.length - 1].semester === "Fall") {
             yearType = plan[plan.length - 1].year;
             semesterType = SemesterType.Spring;
         }else{
