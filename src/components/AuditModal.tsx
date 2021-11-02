@@ -46,22 +46,22 @@ export function AuditModal({plan, visible, setVisible}:
     }
 
     return(
-        <Modal show={visible} onHide = {hide}>
+        <Modal size="lg" show={visible} onHide = {hide}>
             <Modal.Header closeButton>
                 <Modal.Title>Schedule Audit</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div>Core Courses Missing:</div>
-                <Table striped={true} bordered>
+                <Table className="Audit Table" striped={true} bordered>
                     <thead>
                         <tr>
-                            <th>
+                            <th className="text-center">
                                 Course Number
                             </th>
-                            <th>
+                            <th className="text-center">
                                 Course Name
                             </th>
-                            <th>
+                            <th className="text-center">
                                 Credits
                             </th>
                         </tr>
@@ -70,9 +70,9 @@ export function AuditModal({plan, visible, setVisible}:
                         {missingCore.map((c:Course, index:number) => { 
                             return (
                                 <tr key={index}>
-                                    <td className="courseNum">{c.number}</td>
-                                    <td className="courseName">{c.name}</td>
-                                    <td className="credits">{c.credits}</td>
+                                    <td className="text-center">{c.number}</td>
+                                    <td className="text-center">{c.name}</td>
+                                    <td className="text-center">{c.credits}</td>
                                 </tr>
                             );
                         }
