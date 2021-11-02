@@ -5,29 +5,29 @@
     "courses":
     [
       {
-        "number": "CISC275",
-        "name": "Introduction to Software Engineering",
+        "number": "CISC108",
+        "name": "Introduction to Computer Science I",
         "credits": 3
       },
       {
-        "number": "CISC303",
-        "name": "DESCRIPTION",
+        "number": "EGGG101",
+        "name": "Introduction to Engineering",
+        "credits": 2
+      },
+      {
+        "number": "ENGL110",
+        "name": "Seminar in Composition",
         "credits": 3
       },
       {
-        "number": "CISC361",
-        "name": "DESCRIPTION",
-        "credits": 3
-      },
-      {
-        "number": "CISC372",
-        "name": "DESCRIPTION",
-        "credits": 3
-      },
-      {
-        "number": "GEOL107",
-        "name": "DESCRIPTION",
+        "number": "MATH241",
+        "name": "Analytic Geometry and Calculus A",
         "credits": 4
+      },
+      {
+        "number": "ART133",
+        "name": "Drawing for Non-Majors",
+        "credits": 3
       }
     ]
   },
@@ -37,29 +37,29 @@
     "courses":
     [
       {
+        "number": "CISC181",
+        "name": "Introduction to Computer Science II",
+        "credits": 3
+      },
+      {
+        "number": "CISC210",
+        "name": "Introduction to Systems Programming",
+        "credits": 3
+      },
+      {
+        "number": "MATH242",
+        "name": "Analytic Geometry and Calculus B",
+        "credits": 4
+      },
+      {
+        "number": "LEAD125",
+        "name": "Personal Finance",
+        "credits": 3
+      },
+      {
         "number": "AFRA110",
-        "name": "DESCRIPTION",
+        "name": "Introduction to African American Studies",
         "credits": 3
-      },
-      {
-        "number": "CISC320",
-        "name": "DESCRIPTION",
-        "credits": 3
-      },
-      {
-        "number": "CISC361",
-        "name": "DESCRIPTION",
-        "credits": 3
-      },
-      {
-        "number": "GEOL110",
-        "name": "DESCRIPTION",
-        "credits": 4
-      },
-      {
-        "number": "MATH205",
-        "name": "DESCRIPTION",
-        "credits": 4
       }
     ]
   },
@@ -69,29 +69,194 @@
     "courses":
     [
       {
+        "number": "CISC220",
+        "name": "Data Structures",
+        "credits": 3
+      },
+      {
+        "number": "CISC260",
+        "name": "Machine Organization and Assembly Language",
+        "credits": 3
+      },
+      {
+        "number": "MATH210",
+        "name": "Discrete Mathematics I",
+        "credits": 3
+      },
+      {
+        "number": "GEOL105",
+        "name": "Geological Hazards and Their Human Impact",
+        "credits": 3
+      },
+      {
+        "number": "GEOL115",
+        "name": "Geological Hazards Laboratory",
+        "credits": 1
+      },
+      {
+        "number": "HIST227",
+        "name": "History of Science",
+        "credits": 3
+      }
+    ]
+  },
+  {
+    "year": "Second Year",
+    "semester": "Spring",
+    "courses":
+    [
+      {
         "number": "CISC275",
         "name": "Introduction to Software Engineering",
         "credits": 3
       },
       {
-        "number": "CISC303",
-        "name": "DESCRIPTION",
+        "number": "CISC355",
+        "name": "Computers, Ethics and Society",
+        "credits": 3
+      },
+      {
+        "number": "MATH205",
+        "name": "Statistical Methods",
+        "credits": 4
+      },
+      {
+        "number": "GEOL110",
+        "name": "Earth's Evolving Systems",
+        "credits": 4
+      },
+      {
+        "number": "ANTH101",
+        "name": "Introduction to Social and Cultural Anthropology",
+        "credits": 3
+      }
+    ]
+  },
+  {
+    "year": "Third Year",
+    "semester": "Fall",
+    "courses":
+    [
+      {
+        "number": "CISC304",
+        "name": "Logic for Programming",
+        "credits": 3
+      },
+      {
+        "number": "CISC320",
+        "name": "Introduction to Algorithms",
         "credits": 3
       },
       {
         "number": "CISC361",
-        "name": "DESCRIPTION",
+        "name": "Operating Systems",
         "credits": 3
       },
       {
-        "number": "CISC372",
-        "name": "DESCRIPTION",
+        "number": "CISC360",
+        "name": "Computer Architecture",
         "credits": 3
       },
       {
         "number": "GEOL107",
-        "name": "DESCRIPTION",
+        "name": "Geology of Dynamic Earth",
         "credits": 4
+      }
+    ]
+  },
+  {
+    "year": "Third Year",
+    "semester": "Spring",
+    "courses":
+    [
+      {
+        "number": "CISC303",
+        "name": "Automata Theory",
+        "credits": 3
+      },
+      {
+        "number": "CISC372",
+        "name": "Parallel Computing",
+        "credits": 3
+      },
+      {
+        "number": "ENGL312",
+        "name": "Written Communications in Business",
+        "credits": 3
+      },
+      {
+        "number": "CISC450",
+        "name": "Computer Networks I",
+        "credits": 3
+      },
+      {
+        "number": "APEC100",
+        "name": "Sustainable Development",
+        "credits": 3
+      }
+    ]
+  },
+  {
+    "year": "Fourth Year",
+    "semester": "Fall",
+    "courses":
+    [
+      {
+        "number": "CISC498",
+        "name": "Computer Science Senior Design Project I",
+        "credits": 3
+      },
+      {
+        "number": "CISC437",
+        "name": "Database Systems",
+        "credits": 3
+      },
+      {
+        "number": "CISC471",
+        "name": "Compiler Design",
+        "credits": 3
+      },
+      {
+        "number": "CPEG465",
+        "name": "Introduction to Cybersecurity",
+        "credits": 3
+      },
+      {
+        "number": "CISC475",
+        "name": "Advanced Software Engineering",
+        "credits": 3
+      }
+    ]
+  },
+  {
+    "year": "Fourth Year",
+    "semester": "Spring",
+    "courses":
+    [
+      {
+        "number": "CISC499",
+        "name": "Computer Science Senior Design Project II",
+        "credits": 3
+      },
+      {
+        "number": "CISC481",
+        "name": "Artificial Intelligence",
+        "credits": 3
+      },
+      {
+        "number": "CISC464",
+        "name": "Introduction to Network Security",
+        "credits": 3
+      },
+      {
+        "number": "CISC483",
+        "name": "Introduction to Data Mining",
+        "credits": 3
+      },
+      {
+        "number": "CPEG470",
+        "name": "Web Applications Security",
+        "credits": 3
       }
     ]
   }
