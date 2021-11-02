@@ -1,0 +1,82 @@
+[
+    {
+      "number": "EGGG101",
+      "name": "Introduction to Engineering",
+      "credits": 2
+    },
+    {
+      "number": "CISC108",
+      "name": "Introduction to Computer Science I",
+      "credits": 3
+    },
+    {
+      "number": "MATH241",
+      "name": "Analytical Geometry and Calculus A",
+      "credits": 4
+    },
+    {
+      "number": "ENGL101",
+      "name": "Seminar in Composition",
+      "credits": 3
+    },
+    {
+      "number": "CISC181",
+      "name": "Introduction to Computer Science II",
+      "credits": 3
+    },
+    {
+        "number": "MATH242",
+        "name": "Analytical Geometry and Calculus B",
+        "credits": 4
+    },
+    {
+        "number": "CISC210",
+        "name": "Introduction to Systems Programming",
+        "credits": 3
+    },
+    {
+        "number": "CISC220",
+        "name": "Data Structures",
+        "credits": 3
+    },
+    {
+        "number": "CISC260",
+        "name": "Machine Org. & Assembly Language",
+        "credits": 3
+    },
+    {
+        "number": "MATH210",
+        "name": "Discrete Mathematics I",
+        "credits": 3
+    },
+    {
+        "number": "CISC335",
+        "name": "Computers Ethics and Society",
+        "credits": 3
+    },
+    {
+        "number": "CISC275",
+        "name": "Introduction to Software Engineering",
+        "credits": 3
+    },
+    {
+        "number": "CISC320",
+        "name": "Introduction to Algorithms",
+        "credits": 3
+    },
+    {
+        "number": "CISC361",
+        "name": "Operating Systems",
+        "credits": 3
+    },
+    {
+        "number": "CISC372",
+        "name": "Parallel Computing",
+        "credits": 3
+    },
+    {
+        "number": "CISC303",
+        "name": "Automata Theory",
+        "credits": 3
+    }
+  ]
