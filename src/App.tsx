@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import COURSES from "./assets/courses.json";
 import { Semester } from "./interfaces/semester";
 import { Welcome } from "./components/Welcome";
@@ -14,13 +15,16 @@ function App(): JSX.Element {
     function addSemester(newSemester: Semester){
         setPlan([...plan, newSemester]);
     }
-    console.log(plan[0].courses);
+    function RemoveAllSemesters(){
+        setPlan([]);
+    }
 
     return (
         <div className="App">
             <p>UD CIS Scheduler</p>
             <AddSemesterModal addSemesterModal = {addSemesterModal} showAddSemesterModal = {showAddSemesterModal} addSemester = {addSemester}></AddSemesterModal>
             <ControlPanel showAddSemesterModal = {showAddSemesterModal}></ControlPanel>
+            <Button onClick= {RemoveAllSemesters}>Remove All Semesters</Button>
             <PlanViewer plan={plan} setPlan={setPlan}></PlanViewer>
             <Welcome visible = {visible} setVisible = {setVisible}></Welcome>
         </div>
