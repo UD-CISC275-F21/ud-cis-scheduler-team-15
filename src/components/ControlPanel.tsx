@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import { Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import React from "react";
 
 export function ControlPanel({showAddSemesterModal}: 
@@ -7,8 +7,8 @@ export function ControlPanel({showAddSemesterModal}:
     function addSemester()  {
         showAddSemesterModal(true);
     }
-    return<Row>
+    return<Col>
         <Button onClick= {addSemester} className="semesterbutton">Add Semester</Button>
-    </Row>;
+    </Col>;
 }
 
