@@ -5,6 +5,7 @@ import COURSES from "./assets/courses.json";
 import { Semester, SemesterType, YearType } from "./interfaces/semester";
 import { Welcome } from "./components/Welcome";
 import { PlanViewer } from "./components/PlanViewer";
+import { AuditModal } from "./components/AuditModal";
 function App(): JSX.Element {
     const [plan, setPlan] = useState<Semester[]>(COURSES as Semester[]);
     const [visible, setVisible] = useState<boolean>(true);
@@ -27,6 +28,7 @@ function App(): JSX.Element {
         }
         const newSemester = {year: yearType, semester: semesterType, courses: []};
         setPlan([...plan, newSemester]);
+    }
    
     function showAudit():void{
         setAuditVis(true);
