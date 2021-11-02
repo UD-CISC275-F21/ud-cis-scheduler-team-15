@@ -10,13 +10,11 @@ function App(): JSX.Element {
     const [plan, setPlan] = useState<Semester[]>(COURSES as Semester[]);
     const [visible, setVisible] = useState<boolean>(true);
     function addSemester(){
-        console.log(plan.length);
         let yearType = YearType.FirstYear;
         let semesterType = SemesterType.Fall;
         if (plan[plan.length - 1].semester === "Fall") {
             yearType = plan[plan.length - 1].year;
             semesterType = SemesterType.Spring;
-            console.log("ADdaddadad");
         }else{
             semesterType = SemesterType.Fall;
             if(plan[plan.length - 1].year === "First Year"){
