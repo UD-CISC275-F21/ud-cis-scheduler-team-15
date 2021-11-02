@@ -14,6 +14,7 @@ export function SemesterMenu({sem_index, plan, setPlan, semMenuVis, setSemMenuVi
 
     const hide = () => setSemMenuVis(false);
 
+    // clears a semester's courses by replacing it with an empty semester
     function clearSemester():void{
         setPlan(plan.map((s:Semester) => {
             if (s === plan[sem_index]) {
@@ -25,6 +26,7 @@ export function SemesterMenu({sem_index, plan, setPlan, semMenuVis, setSemMenuVi
         setSemMenuVis(false);
     }
 
+    // deletes a semester by filtering it out of the plan
     function deleteSemester():void{
         setPlan(plan.filter(s => s != plan[sem_index]));
         setSemMenuVis(false);
@@ -42,6 +44,7 @@ export function SemesterMenu({sem_index, plan, setPlan, semMenuVis, setSemMenuVi
         setSemMenuVis(false);
     }
 
+    // render the semester menu
     return(
         <Modal show={semMenuVis} onHide = {hide}>
             <Modal.Header closeButton>
