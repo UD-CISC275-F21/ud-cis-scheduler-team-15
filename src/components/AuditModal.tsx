@@ -13,8 +13,6 @@ export function AuditModal({plan, visible, setVisible}:
 
     //Missing Core Courses
     const [missingCore, setMissingCore] = useState<Course[]>([]);
-    //Only check rules once upon rendering
-    const [checkRules, setCheckRules] = useState<boolean>(true);
 
     //Get require courses for checking
     const reqCourses: Course[] = RequiredCourses as Course[];
@@ -29,18 +27,29 @@ export function AuditModal({plan, visible, setVisible}:
     
     //Checks for core courses
     function checkCore():void{
+        console.log("CHECK");
         const temp_missing: Course[] = [];
         for(let i = 0; i<reqCourses.length; i++){
-            if(!allCourses.includes(reqCourses[i])){
-                temp_missing.push(reqCourses[i]);
-            }
-            
+
+            for(let j = 0; j<allCourses.length; j++){
+                if(allCourses[j].number === reqCourses[i].number 
+                    && allCourses[j].name === reqCourses[i].name 
+                    && allCourses[j].credits === reqCourses[i].credits){
+                    break;
+                }
+                if(j === allCourses.length-1){
+                    temp_missing.push(reqCourses[i]);
+                }
+            }            
         }
         setMissingCore(temp_missing);
     }
 
     //Only do the checks once to avoid inf loop
-    if (checkRules){
+    const [checkRules, setCheckRules] = useState<boolean>(true);
+    if (!visible && !checkRules){
+        setCheckRules(true);
+    }else if(visible && checkRules){
         checkCore();
         setCheckRules(false);
     }
