@@ -28,22 +28,16 @@ export function SemesterMenu({sem_index, plan, setPlan, semMenuVis, setSemMenuVi
         setSemMenuVis(false);
     }
 
-    /*function deleteSemester(s:Semester):void{
-        const tempPlan:Semester[] = plan;
-        tempPlan.map((s:Semester) => {
-            if (s != plan[sem_index]) {
-                return {...s};
-            }
-        });
-        setPlan(tempPlan);
+    function deleteSemester():void{
+        setPlan(plan.filter(s => s != plan[sem_index]));
         setSemMenuVis(false);
-    }*/
+    }
 
     // makes a copy of the old plan but with a new course in the selected semester
     function setPlanViewer():void{
         setPlan(plan.map((s:Semester) => {
             if (s === plan[sem_index]) {
-                return {...plan[sem_index], courses: [...plan[sem_index].courses, {number: "", name: "", credits: 0}]};
+                return {...s, courses: [...plan[sem_index].courses, {number: "", name: "", credits: 0}]};
             } else {
                 return {...s};
             }
@@ -65,7 +59,7 @@ export function SemesterMenu({sem_index, plan, setPlan, semMenuVis, setSemMenuVi
                     <Button variant="danger" onClick={() => clearSemester()}>Delete all courses from semester</Button>
                 </Col>
                 <Col>
-                    <Button variant="danger" /*onClick={() => deleteSemester(plan[sem_index])}*/>Delete semester</Button>
+                    <Button variant="danger" onClick={() => deleteSemester()}>Delete semester</Button>
                 </Col>
             </Modal.Body>
         </Modal>
