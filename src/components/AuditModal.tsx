@@ -61,33 +61,35 @@ export function AuditModal({plan, visible, setVisible}:
             </Modal.Header>
             <Modal.Body>
                 <strong className="AuditLabel">Core Courses Missing:</strong>
-                <Table className="AuditTable" striped={true} bordered>
-                    <thead>
-                        <tr>
-                            <th className="text-center">
-                                Course Number
-                            </th>
-                            <th className="text-center">
-                                Course Name
-                            </th>
-                            <th className="text-center">
-                                Credits
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {missingCore.map((c:Course, index:number) => { 
-                            return (
-                                <tr key={index}>
-                                    <td className="text-center">{c.number}</td>
-                                    <td className="text-center">{c.name}</td>
-                                    <td className="text-center">{c.credits}</td>
-                                </tr>
-                            );
-                        }
-                        )}
-                    </tbody>
-                </Table>
+                {missingCore.length?
+                    <Table className="AuditTable" striped={true} bordered>
+                        <thead>
+                            <tr>
+                                <th className="text-center">
+                                    Course Number
+                                </th>
+                                <th className="text-center">
+                                    Course Name
+                                </th>
+                                <th className="text-center">
+                                    Credits
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {missingCore.map((c:Course, index:number) => { 
+                                return (
+                                    <tr key={index}>
+                                        <td className="text-center">{c.number}</td>
+                                        <td className="text-center">{c.name}</td>
+                                        <td className="text-center">{c.credits}</td>
+                                    </tr>
+                                );
+                            }
+                            )}
+                        </tbody>
+                    </Table>: <div>None</div>
+                }
             </Modal.Body>
         </Modal>
     );
