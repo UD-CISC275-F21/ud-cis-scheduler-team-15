@@ -53,7 +53,6 @@ function App(): JSX.Element {
         hiddenElement.target = "_blank";
         hiddenElement.download = "Schedule.csv";  
         hiddenElement.click();  
-
     }
 
 
