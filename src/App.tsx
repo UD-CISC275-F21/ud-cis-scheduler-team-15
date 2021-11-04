@@ -47,8 +47,12 @@ function App(): JSX.Element {
         }
         const csvContent = "data:text/csv;charset=utf-8,"
         + plan.map((s: Semester) => s.year + "," + s.semester + "," + semCourses(s.courses) + "\n");
-        const encodedUri = encodeURI(csvContent);
-        window.open(encodedUri);
+        document.write(csvContent);
+        const hiddenElement = document.createElement("a");  
+        hiddenElement.href = encodeURI(csvContent);  
+        hiddenElement.target = "_blank";
+        hiddenElement.download = "Schedule.csv";  
+        hiddenElement.click();  
 
     }
 
