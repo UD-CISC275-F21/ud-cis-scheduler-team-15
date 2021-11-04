@@ -42,10 +42,10 @@ function App(): JSX.Element {
     }
     function download(){
         function semCourses(c: Course[]){
-            const semCourse = c.map((q: Course) => q.number + "," + q.name + "," + q.credits);
+            const semCourse = "\n" + "ID," + "Title," + "Credits," + c.map((q: Course) => "\n" + q.number + "," + q.name + "," + q.credits);
             return semCourse;
         }
-        const csvContent = "data:text/csv;charset=utf-8," + "Year," + "Semester," + "ID," + "Title," + "Credits," + plan.map((s: Semester) => "\n" + s.year + "," + s.semester + "," + semCourses(s.courses));
+        const csvContent = "data:text/csv;charset=utf-8," + "Year," + "Semester," + plan.map((s: Semester) => "\n" + s.year + "," + s.semester + "," + semCourses(s.courses));
         document.write(csvContent);
         const hiddenElement = document.createElement("a");  
         hiddenElement.href = encodeURI(csvContent);  
