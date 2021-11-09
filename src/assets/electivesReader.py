@@ -17,6 +17,8 @@ for i in range(5):
     html_bytes = page.read()
     html = html_bytes.decode("utf-8")
     courses = re.findall("\w\w\w\w? \d\d\d", html)
+    for i in range(len(courses)):
+        courses[i] = re.sub(r"\s+", "", courses[i])
     data = json.dumps(courses)
     file = open(f,"w")
     file.write(data)

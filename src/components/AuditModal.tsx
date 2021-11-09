@@ -80,7 +80,7 @@ export function AuditModal({plan, visible, setVisible}:
         for (let i = 0; i<allCourses.length; i++){
             for (let j = 0; j<artsHumanities.length; j++){
                 //Find first one that satisfies arts and humanities
-                if (allCourses[i].number.startsWith(artsHumanities[j])){
+                if (allCourses[i].number === (artsHumanities[j])){
                     temp_breadth.push(allCourses[i]);
                     break;
                 }
@@ -93,8 +93,6 @@ export function AuditModal({plan, visible, setVisible}:
             //add empty course if nothing satisfies
             temp_breadth.push(empty_course);
         }
-
-        //
 
         setBreadth(temp_breadth);
     }
