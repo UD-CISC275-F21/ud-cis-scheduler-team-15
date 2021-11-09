@@ -14,6 +14,9 @@ export function AuditModal({plan, visible, setVisible}:
     //Missing Core Courses
     const [missingCore, setMissingCore] = useState<Course[]>([]);
 
+    //CISC electives
+    const [CISCelectives, setCISCelectives] = useState<Course[]>([]);
+
     //Get require courses for checking
     const reqCourses: Course[] = RequiredCourses as Course[];
     
@@ -70,6 +73,7 @@ export function AuditModal({plan, visible, setVisible}:
         setCheckRules(true);
     }else if(visible && checkRules){
         checkCore();
+        checkCISCElec();
         setCheckRules(false);
     }
 
@@ -109,6 +113,35 @@ export function AuditModal({plan, visible, setVisible}:
                         </tbody>
                     </Table>: <div>None</div>
                 }
+                <strong className="AuditLabel">CISC Electives (18 credits required)</strong>
+                <Table className="AuditTable" striped={true} bordered>
+                        <thead>
+                            <tr>
+                                <th className="text-center">
+                                    Course Number
+                                </th>
+                                <th className="text-center">
+                                    Course Name
+                                </th>
+                                <th className="text-center">
+                                    Credits
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {CISCelectives.map((c:Course, index:number) => { 
+                                return (
+                                    <tr key={index}>
+                                        <td className="text-center">{c.number}</td>
+                                        <td className="text-center">{c.name}</td>
+                                        <td className="text-center">{c.credits}</td>
+                                    </tr>
+                                );
+                            }
+                            )}
+                        </tbody>
+                    </Table>
+
             </Modal.Body>
         </Modal>
     );
