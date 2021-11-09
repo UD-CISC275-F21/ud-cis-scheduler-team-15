@@ -7,6 +7,7 @@ import ArtsHumanities from "../assets/ArtsHumanities.json";
 import HistoryCultural from "../assets/HistoryCultural.json";
 import SocialBehavioral from "../assets/SocialBehavioral.json";
 import Tech from "../assets/Tech.json";
+import COEupper from "../assets/COEupper.json";
 import { CourseViewer } from "./CourseViewer";
 
 export function AuditModal({plan, visible, setVisible}:
@@ -84,6 +85,41 @@ export function AuditModal({plan, visible, setVisible}:
         temp_breadth.push(isIn(allCourses,SocialBehavioral));
         temp_breadth.push(isIn(allCourses,Tech));
 
+        //COE additional breadths
+        const temp_additional: Course[] = isInAll(allCourses,COEupper);
+        //only one under 300 allowed
+        let used_lower = false;
+        for (let i = 0; i<temp_additional.length; i++){
+            //Upper?
+            const upper:boolean = (temp_additional[i].number.slice(-3,-2) == "3" || temp_additional[i].number.slice(-3,-2) == "4");
+            console.log(temp_additional[i].number);
+            console.log(upper);
+            //Is it already being used?
+            if(isIn(temp_breadth,[temp_additional[i].number]).number){
+                continue;
+            }else{
+                //Is it a second lower?
+                if (!upper && used_lower){
+                    continue;
+                }else{
+                    //Add it to the list
+                    temp_breadth.push(temp_additional[i]);
+                    if (!upper){
+                        used_lower = true;
+                    }
+                    //Is this our third? (only need 3)
+                    if (temp_breadth.length == 7){
+                        break;
+                    }
+                }
+            }
+        }
+        //if no additional breadth
+        console.log(temp_additional);
+        if(!temp_additional[0].number){
+            temp_breadth.push({number:"", name:"", credits:0});
+        }
+
         setBreadth(temp_breadth);
     }
 
@@ -100,6 +136,24 @@ export function AuditModal({plan, visible, setVisible}:
             }
         }
         return {number:"", name:"", credits:0};
+    }
+
+    //Same as isIn, but returns all
+    function isInAll(courses:Course[], nums:string[]):Course[]{
+        const temp_courses:Course[] = [];
+        for (let i = 0; i<courses.length; i++){
+            for (let j = 0; j<nums.length; j++){
+                //Does it satisfy?
+                if (courses[i].number === (nums[j])){
+                    temp_courses.push(courses[i]);
+                }
+            }
+        }
+        //add the empty course if nothing matches
+        if (temp_courses.length === 0){
+            temp_courses.push({number:"", name:"", credits:0});
+        }
+        return temp_courses;
     }
 
     //Only do the checks once to avoid inf loop
@@ -278,6 +332,34 @@ export function AuditModal({plan, visible, setVisible}:
                                 <td className="text-center">{breadth[3].credits}</td>
                             </tr>
                         ):<tr></tr>}
+                    </tbody>
+                </Table>
+                <strong className="AuditLabel">COE Additional Breadth (9 credits, 6 upper)</strong>
+                <Table className="AuditTable" striped={true} bordered>
+                    <thead>
+                        <tr>
+                            <th className="text-center">
+                                Course Number
+                            </th>
+                            <th className="text-center">
+                                Course Name
+                            </th>
+                            <th className="text-center">
+                                Credits
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {breadth.slice(4).map((c:Course, index:number) => { 
+                            return (
+                                <tr key={index}>
+                                    <td className="text-center">{c.number}</td>
+                                    <td className="text-center">{c.name}</td>
+                                    <td className="text-center">{c.credits}</td>
+                                </tr>
+                            );
+                        })
+                        }
                     </tbody>
                 </Table>
             </Modal.Body>
