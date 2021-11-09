@@ -62,7 +62,7 @@ export function AuditModal({plan, visible, setVisible}:
                 }
             }
         }
-
+        setCISCelectives(electives);
     }
 
 
@@ -115,33 +115,32 @@ export function AuditModal({plan, visible, setVisible}:
                 }
                 <strong className="AuditLabel">CISC Electives (18 credits required)</strong>
                 <Table className="AuditTable" striped={true} bordered>
-                        <thead>
-                            <tr>
-                                <th className="text-center">
-                                    Course Number
-                                </th>
-                                <th className="text-center">
-                                    Course Name
-                                </th>
-                                <th className="text-center">
-                                    Credits
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {CISCelectives.map((c:Course, index:number) => { 
-                                return (
-                                    <tr key={index}>
-                                        <td className="text-center">{c.number}</td>
-                                        <td className="text-center">{c.name}</td>
-                                        <td className="text-center">{c.credits}</td>
-                                    </tr>
-                                );
-                            }
-                            )}
-                        </tbody>
-                    </Table>
-
+                    <thead>
+                        <tr>
+                            <th className="text-center">
+                                Course Number
+                            </th>
+                            <th className="text-center">
+                                Course Name
+                            </th>
+                            <th className="text-center">
+                                Credits
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {CISCelectives.map((c:Course, index:number) => { 
+                            return (
+                                <tr key={index}>
+                                    <td className="text-center">{c.number}</td>
+                                    <td className="text-center">{c.name}</td>
+                                    <td className="text-center">{c.credits}</td>
+                                </tr>
+                            );
+                        }
+                        )}
+                    </tbody>
+                </Table>
             </Modal.Body>
         </Modal>
     );
