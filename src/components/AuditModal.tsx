@@ -3,6 +3,8 @@ import {Modal, Table} from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import RequiredCourses from "../assets/RequiredCoreCourses.json";
 import { Course } from "../interfaces/course";
+import ArtsHumanities from "../assets/ArtsHumanities.json";
+import { CourseViewer } from "./CourseViewer";
 
 export function AuditModal({plan, visible, setVisible}:
     {plan: Semester[];
@@ -17,8 +19,12 @@ export function AuditModal({plan, visible, setVisible}:
     //CISC electives
     const [CISCelectives, setCISCelectives] = useState<Course[]>([]);
 
+    //Breadth electives
+    const [breadth, setBreadth] = useState<Course[]>([]);
+
     //Get require courses for checking
     const reqCourses: Course[] = RequiredCourses as Course[];
+    const artsHumanities: string[] = ArtsHumanities as string[];
     
     //Raw list of all courses (will be helpful for some checks)
     const allCourses: Course[] = [];
@@ -49,24 +55,49 @@ export function AuditModal({plan, visible, setVisible}:
     //Check for CISC electives
     // 6 required that are not core course
     function checkCISCElec():void{
-        const electives: Course[] = [];
+        const temp_CISCelectives: Course[] = [];
         for (let i = 0; i<allCourses.length; i++){
             if(allCourses[i].number.startsWith("CISC")){
-                console.log("CHECK");
                 for (let j = 0; j<reqCourses.length; j++){
                     if(allCourses[i].name == reqCourses[j].name){
                         break;
                     }
                     if(j === reqCourses.length-1){
-                        electives.push(allCourses[i]);
+                        temp_CISCelectives.push(allCourses[i]);
                     }
                 }
             }
         }
-        setCISCelectives(electives);
+        setCISCelectives(temp_CISCelectives);
     }
 
+    //Check for breadths
+    function checkBreadths():void{
+        const empty_course: Course = {number:"", name:"", credits:0};
+        const temp_breadth: Course[] = [];
 
+        //Arts and Humanities
+        for (let i = 0; i<allCourses.length; i++){
+            for (let j = 0; j<artsHumanities.length; j++){
+                //Find first one that satisfies arts and humanities
+                if (allCourses[i].number.startsWith(artsHumanities[j])){
+                    temp_breadth.push(allCourses[i]);
+                    break;
+                }
+            }
+            if (temp_breadth.length == 1){
+                break;
+            }
+        }
+        if (temp_breadth.length == 0){
+            //add empty course if nothing satisfies
+            temp_breadth.push(empty_course);
+        }
+
+        //
+
+        setBreadth(temp_breadth);
+    }
 
     //Only do the checks once to avoid inf loop
     const [checkRules, setCheckRules] = useState<boolean>(true);
@@ -75,6 +106,7 @@ export function AuditModal({plan, visible, setVisible}:
     }else if(visible && checkRules){
         checkCore();
         checkCISCElec();
+        checkBreadths();
         setCheckRules(false);
     }
 
@@ -131,6 +163,35 @@ export function AuditModal({plan, visible, setVisible}:
                     </thead>
                     <tbody>
                         {CISCelectives.map((c:Course, index:number) => { 
+                            return (
+                                <tr key={index}>
+                                    <td className="text-center">{c.number}</td>
+                                    <td className="text-center">{c.name}</td>
+                                    <td className="text-center">{c.credits}</td>
+                                </tr>
+                            );
+                        }
+                        )}
+                    </tbody>
+                </Table>
+                <strong className="AuditLabel">Breadth Electives</strong>
+                <strong className="AuditLabel">Arts and Humanities (3 credits required)</strong>
+                <Table className="AuditTable" striped={true} bordered>
+                    <thead>
+                        <tr>
+                            <th className="text-center">
+                                Course Number
+                            </th>
+                            <th className="text-center">
+                                Course Name
+                            </th>
+                            <th className="text-center">
+                                Credits
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {breadth.map((c:Course, index:number) => { 
                             return (
                                 <tr key={index}>
                                     <td className="text-center">{c.number}</td>
