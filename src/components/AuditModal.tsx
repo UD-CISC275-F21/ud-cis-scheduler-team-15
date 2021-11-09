@@ -252,7 +252,7 @@ export function AuditModal({plan, visible, setVisible}:
                                 <td className="text-center">{breadth[0].name}</td>
                                 <td className="text-center">{breadth[0].credits}</td>
                             </tr>
-                        :<tr></tr>}
+                            :<tr></tr>}
                     </tbody>
                 </Table>
                 <strong className="AuditLabel">History and Cultural Change (3 credits required)</strong>
@@ -277,7 +277,7 @@ export function AuditModal({plan, visible, setVisible}:
                                 <td className="text-center">{breadth[1].name}</td>
                                 <td className="text-center">{breadth[1].credits}</td>
                             </tr>
-                        :<tr></tr>}
+                            :<tr></tr>}
                     </tbody>
                 </Table>
                 <strong className="AuditLabel">Social and Behavioral Science (3 credits required)</strong>
@@ -302,7 +302,7 @@ export function AuditModal({plan, visible, setVisible}:
                                 <td className="text-center">{breadth[2].name}</td>
                                 <td className="text-center">{breadth[2].credits}</td>
                             </tr>
-                        :<tr></tr>}
+                            :<tr></tr>}
                     </tbody>
                 </Table>
                 <strong className="AuditLabel">Mathematics, Natural Sciences, and Technology (3 credits required)</strong>
@@ -327,7 +327,7 @@ export function AuditModal({plan, visible, setVisible}:
                                 <td className="text-center">{breadth[3].name}</td>
                                 <td className="text-center">{breadth[3].credits}</td>
                             </tr>
-                        :<tr></tr>}
+                            :<tr></tr>}
                     </tbody>
                 </Table>
                 <strong className="AuditLabel">COE Additional Breadth (9 credits, 6 upper)</strong>
