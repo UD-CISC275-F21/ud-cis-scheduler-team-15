@@ -4,6 +4,9 @@ import { Semester } from "../interfaces/semester";
 import RequiredCourses from "../assets/RequiredCoreCourses.json";
 import { Course } from "../interfaces/course";
 import ArtsHumanities from "../assets/ArtsHumanities.json";
+import HistoryCultural from "../assets/HistoryCultural.json";
+import SocialBehavioral from "../assets/SocialBehavioral.json";
+import Tech from "../assets/Tech.json";
 import { CourseViewer } from "./CourseViewer";
 
 export function AuditModal({plan, visible, setVisible}:
@@ -73,28 +76,30 @@ export function AuditModal({plan, visible, setVisible}:
 
     //Check for breadths
     function checkBreadths():void{
-        const empty_course: Course = {number:"", name:"", credits:0};
         const temp_breadth: Course[] = [];
 
-        //Arts and Humanities
-        for (let i = 0; i<allCourses.length; i++){
-            for (let j = 0; j<artsHumanities.length; j++){
-                //Find first one that satisfies arts and humanities
-                if (allCourses[i].number === (artsHumanities[j])){
-                    temp_breadth.push(allCourses[i]);
-                    break;
-                }
-            }
-            if (temp_breadth.length == 1){
-                break;
-            }
-        }
-        if (temp_breadth.length == 0){
-            //add empty course if nothing satisfies
-            temp_breadth.push(empty_course);
-        }
+        //Check general breadth
+        temp_breadth.push(isIn(allCourses,ArtsHumanities));
+        temp_breadth.push(isIn(allCourses,HistoryCultural));
+        temp_breadth.push(isIn(allCourses,SocialBehavioral));
+        temp_breadth.push(isIn(allCourses,Tech));
 
         setBreadth(temp_breadth);
+    }
+
+    //Does the list of courses contain any of the numbers in the list of course numbers?
+    //If so, return the course of the first time it does
+    //If not, returns a 0 credit, empty course
+    function isIn(courses:Course[], nums:string[]):Course{
+        for (let i = 0; i<courses.length; i++){
+            for (let j = 0; j<nums.length; j++){
+                //Find first one that satisfies
+                if (courses[i].number === (nums[j])){
+                    return courses[i];
+                }
+            }
+        }
+        return {number:"", name:"", credits:0};
     }
 
     //Only do the checks once to avoid inf loop
@@ -172,7 +177,9 @@ export function AuditModal({plan, visible, setVisible}:
                         )}
                     </tbody>
                 </Table>
-                <strong className="AuditLabel">Breadth Electives</strong>
+                <div>
+                    <strong className="AuditLabel">Breadth Electives</strong>
+                </div>
                 <strong className="AuditLabel">Arts and Humanities (3 credits required)</strong>
                 <Table className="AuditTable" striped={true} bordered>
                     <thead>
@@ -189,16 +196,88 @@ export function AuditModal({plan, visible, setVisible}:
                         </tr>
                     </thead>
                     <tbody>
-                        {breadth.map((c:Course, index:number) => { 
-                            return (
-                                <tr key={index}>
-                                    <td className="text-center">{c.number}</td>
-                                    <td className="text-center">{c.name}</td>
-                                    <td className="text-center">{c.credits}</td>
-                                </tr>
-                            );
-                        }
-                        )}
+                        {breadth[0]?(
+                            <tr>
+                                <td className="text-center">{breadth[0].number}</td>
+                                <td className="text-center">{breadth[0].name}</td>
+                                <td className="text-center">{breadth[0].credits}</td>
+                            </tr>
+                        ):<tr></tr>}
+                    </tbody>
+                </Table>
+                <strong className="AuditLabel">History and Cultural Change (3 credits required)</strong>
+                <Table className="AuditTable" striped={true} bordered>
+                    <thead>
+                        <tr>
+                            <th className="text-center">
+                                Course Number
+                            </th>
+                            <th className="text-center">
+                                Course Name
+                            </th>
+                            <th className="text-center">
+                                Credits
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {breadth[1]?(
+                            <tr>
+                                <td className="text-center">{breadth[1].number}</td>
+                                <td className="text-center">{breadth[1].name}</td>
+                                <td className="text-center">{breadth[1].credits}</td>
+                            </tr>
+                        ):<tr></tr>}
+                    </tbody>
+                </Table>
+                <strong className="AuditLabel">Social and Behavioral Science (3 credits required)</strong>
+                <Table className="AuditTable" striped={true} bordered>
+                    <thead>
+                        <tr>
+                            <th className="text-center">
+                                Course Number
+                            </th>
+                            <th className="text-center">
+                                Course Name
+                            </th>
+                            <th className="text-center">
+                                Credits
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {breadth[2]?(
+                            <tr>
+                                <td className="text-center">{breadth[2].number}</td>
+                                <td className="text-center">{breadth[2].name}</td>
+                                <td className="text-center">{breadth[2].credits}</td>
+                            </tr>
+                        ):<tr></tr>}
+                    </tbody>
+                </Table>
+                <strong className="AuditLabel">Mathematics, Natural Sciences, and Technology (3 credits required)</strong>
+                <Table className="AuditTable" striped={true} bordered>
+                    <thead>
+                        <tr>
+                            <th className="text-center">
+                                Course Number
+                            </th>
+                            <th className="text-center">
+                                Course Name
+                            </th>
+                            <th className="text-center">
+                                Credits
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {breadth[3]?(
+                            <tr>
+                                <td className="text-center">{breadth[3].number}</td>
+                                <td className="text-center">{breadth[3].name}</td>
+                                <td className="text-center">{breadth[3].credits}</td>
+                            </tr>
+                        ):<tr></tr>}
                     </tbody>
                 </Table>
             </Modal.Body>
