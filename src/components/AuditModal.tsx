@@ -27,10 +27,8 @@ export function AuditModal({plan, visible, setVisible}:
     
     //Checks for core courses
     function checkCore():void{
-        console.log("CHECK");
         const temp_missing: Course[] = [];
         for(let i = 0; i<reqCourses.length; i++){
-
             for(let j = 0; j<allCourses.length; j++){
                 if(allCourses[j].number === reqCourses[i].number 
                     && allCourses[j].name === reqCourses[i].name 
@@ -44,6 +42,27 @@ export function AuditModal({plan, visible, setVisible}:
         }
         setMissingCore(temp_missing);
     }
+
+    //Check for CISC electives
+    // 6 required that are not core course
+    function checkCISCElec():void{
+        const electives: Course[] = [];
+        for (let i = 0; i<allCourses.length; i++){
+            if(allCourses[i].name.startsWith("CISC")){
+                for (let j = 0; j<reqCourses.length; j++){
+                    if(allCourses[i].name == reqCourses[j].name){
+                        break;
+                    }
+                    if(j === reqCourses.length-1){
+                        electives.push(allCourses[i]);
+                    }
+                }
+            }
+        }
+
+    }
+
+
 
     //Only do the checks once to avoid inf loop
     const [checkRules, setCheckRules] = useState<boolean>(true);
