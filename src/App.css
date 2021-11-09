@@ -130,6 +130,11 @@ table, th, td{
   border-left:none;
 }
 
+.poolLabel{
+  width: 100%;
+  border-left:none;
+}
+
 .YearTable{
   table-layout: fixed;
   min-width: 100%;

@@ -45,23 +45,45 @@ export function SemesterMenu({sem_index, plan, setPlan, semMenuVis, setSemMenuVi
     }
 
     // render the semester menu
-    return(
-        <Modal show={semMenuVis} onHide = {hide}>
-            <Modal.Header closeButton>
-                <Modal.Title>Add Course to Semester</Modal.Title>
-            </Modal.Header>
-
-            <Modal.Body>
-                <Col>
-                    <Button variant="success" onClick={() => setPlanViewer()}>Add a course</Button>
-                </Col>
-                <Col>
-                    <Button variant="danger" onClick={() => clearSemester()}>Delete all courses from semester</Button>
-                </Col>
-                <Col>
-                    <Button variant="danger" onClick={() => deleteSemester()}>Delete semester</Button>
-                </Col>
-            </Modal.Body>
-        </Modal>
-    );
+    if ((plan[sem_index].year === "Pool of Courses") || (plan[sem_index].year === "Pool of Courses")) {
+        return(
+            <Modal show={semMenuVis} onHide = {hide}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Course to Semester</Modal.Title>
+                </Modal.Header>
+    
+                <Modal.Body>
+                    <Col>
+                        <Button variant="success" onClick={() => setPlanViewer()}>Add a course</Button>
+                    </Col>
+                    <Col>
+                        <Button variant="danger" onClick={() => clearSemester()}>Delete all courses from semester</Button>
+                    </Col>
+                    <Col>
+                        <Button disabled variant="danger" onClick={() => deleteSemester()}>Delete semester</Button>
+                    </Col>
+                </Modal.Body>
+            </Modal>
+        );
+    } else {
+        return(
+            <Modal show={semMenuVis} onHide = {hide}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Course to Semester</Modal.Title>
+                </Modal.Header>
+    
+                <Modal.Body>
+                    <Col>
+                        <Button variant="success" onClick={() => setPlanViewer()}>Add a course</Button>
+                    </Col>
+                    <Col>
+                        <Button variant="danger" onClick={() => clearSemester()}>Delete all courses from semester</Button>
+                    </Col>
+                    <Col>
+                        <Button variant="danger" onClick={() => deleteSemester()}>Delete semester</Button>
+                    </Col>
+                </Modal.Body>
+            </Modal>
+        );
+    }
 }
