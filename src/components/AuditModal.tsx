@@ -8,7 +8,6 @@ import HistoryCultural from "../assets/HistoryCultural.json";
 import SocialBehavioral from "../assets/SocialBehavioral.json";
 import Tech from "../assets/Tech.json";
 import COEupper from "../assets/COEupper.json";
-import { CourseViewer } from "./CourseViewer";
 
 export function AuditModal({plan, visible, setVisible}:
     {plan: Semester[];
@@ -28,7 +27,6 @@ export function AuditModal({plan, visible, setVisible}:
 
     //Get require courses for checking
     const reqCourses: Course[] = RequiredCourses as Course[];
-    const artsHumanities: string[] = ArtsHumanities as string[];
     
     //Raw list of all courses (will be helpful for some checks)
     const allCourses: Course[] = [];
@@ -91,9 +89,7 @@ export function AuditModal({plan, visible, setVisible}:
         let used_lower = false;
         for (let i = 0; i<temp_additional.length; i++){
             //Upper?
-            const upper:boolean = (temp_additional[i].number.slice(-3,-2) == "3" || temp_additional[i].number.slice(-3,-2) == "4");
-            console.log(temp_additional[i].number);
-            console.log(upper);
+            const upper:boolean = temp_additional[i].number.slice(-3,-2) == "3" || temp_additional[i].number.slice(-3,-2) == "4";
             //Is it already being used?
             if(isIn(temp_breadth,[temp_additional[i].number]).number){
                 continue;
