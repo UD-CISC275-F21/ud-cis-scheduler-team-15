@@ -126,7 +126,7 @@ export function AuditModal({plan, visible, setVisible}:
         for (let i = 0; i<courses.length; i++){
             for (let j = 0; j<nums.length; j++){
                 //Find first one that satisfies
-                if (courses[i].number === (nums[j])){
+                if (courses[i].number === nums[j]){
                     return courses[i];
                 }
             }
@@ -140,7 +140,7 @@ export function AuditModal({plan, visible, setVisible}:
         for (let i = 0; i<courses.length; i++){
             for (let j = 0; j<nums.length; j++){
                 //Does it satisfy?
-                if (courses[i].number === (nums[j])){
+                if (courses[i].number === nums[j]){
                     temp_courses.push(courses[i]);
                 }
             }
@@ -246,13 +246,13 @@ export function AuditModal({plan, visible, setVisible}:
                         </tr>
                     </thead>
                     <tbody>
-                        {breadth[0]?(
+                        {breadth[0]?
                             <tr>
                                 <td className="text-center">{breadth[0].number}</td>
                                 <td className="text-center">{breadth[0].name}</td>
                                 <td className="text-center">{breadth[0].credits}</td>
                             </tr>
-                        ):<tr></tr>}
+                        :<tr></tr>}
                     </tbody>
                 </Table>
                 <strong className="AuditLabel">History and Cultural Change (3 credits required)</strong>
@@ -271,13 +271,13 @@ export function AuditModal({plan, visible, setVisible}:
                         </tr>
                     </thead>
                     <tbody>
-                        {breadth[1]?(
+                        {breadth[1]?
                             <tr>
                                 <td className="text-center">{breadth[1].number}</td>
                                 <td className="text-center">{breadth[1].name}</td>
                                 <td className="text-center">{breadth[1].credits}</td>
                             </tr>
-                        ):<tr></tr>}
+                        :<tr></tr>}
                     </tbody>
                 </Table>
                 <strong className="AuditLabel">Social and Behavioral Science (3 credits required)</strong>
@@ -296,13 +296,13 @@ export function AuditModal({plan, visible, setVisible}:
                         </tr>
                     </thead>
                     <tbody>
-                        {breadth[2]?(
+                        {breadth[2]?
                             <tr>
                                 <td className="text-center">{breadth[2].number}</td>
                                 <td className="text-center">{breadth[2].name}</td>
                                 <td className="text-center">{breadth[2].credits}</td>
                             </tr>
-                        ):<tr></tr>}
+                        :<tr></tr>}
                     </tbody>
                 </Table>
                 <strong className="AuditLabel">Mathematics, Natural Sciences, and Technology (3 credits required)</strong>
@@ -321,13 +321,13 @@ export function AuditModal({plan, visible, setVisible}:
                         </tr>
                     </thead>
                     <tbody>
-                        {breadth[3]?(
+                        {breadth[3]?
                             <tr>
                                 <td className="text-center">{breadth[3].number}</td>
                                 <td className="text-center">{breadth[3].name}</td>
                                 <td className="text-center">{breadth[3].credits}</td>
                             </tr>
-                        ):<tr></tr>}
+                        :<tr></tr>}
                     </tbody>
                 </Table>
                 <strong className="AuditLabel">COE Additional Breadth (9 credits, 6 upper)</strong>
