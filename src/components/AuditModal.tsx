@@ -51,7 +51,8 @@ export function AuditModal({plan, visible, setVisible}:
     function checkCISCElec():void{
         const electives: Course[] = [];
         for (let i = 0; i<allCourses.length; i++){
-            if(allCourses[i].name.startsWith("CISC")){
+            if(allCourses[i].number.startsWith("CISC")){
+                console.log("CHECK");
                 for (let j = 0; j<reqCourses.length; j++){
                     if(allCourses[i].name == reqCourses[j].name){
                         break;
@@ -83,7 +84,7 @@ export function AuditModal({plan, visible, setVisible}:
                 <Modal.Title>Schedule Audit</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <strong className="AuditLabel">Core Courses Missing:</strong>
+                <strong className="AuditLabel">Core Courses Missing</strong>
                 {missingCore.length?
                     <Table className="AuditTable" striped={true} bordered>
                         <thead>
