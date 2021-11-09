@@ -1,0 +1,28 @@
+[
+    {"course": "CISC181",
+    "prereqs": ["CISC108"]},
+
+    {"course": "CISC210",
+    "prereqs": ["CISC108"]},
+    
+    {"course": "CISC220",
+    "prereqs": ["CISC210"]},
+
+    {"course": "CISC260",
+    "prereqs": ["CISC210"]},
+
+    {"course": "CISC275",
+    "prereqs": ["CISC181", "CISC220"]},
+
+    {"course": "CISC303",
+    "prereqs": ["MATH210", "CISC220"]},
+
+    {"course": "CISC320",
+    "prereqs": ["MATH210", "CISC220"]},
+
+    {"course": "CISC361",
+    "prereqs": ["CISC220", "CISC260"]},
+
+    {"course": "CISC372",
+    "prereqs": ["CISC220", "CISC260"]}
+]
