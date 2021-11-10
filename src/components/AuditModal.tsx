@@ -219,6 +219,7 @@ export function AuditModal({plan, visible, setVisible}:
         checkCore();
         checkCISCElec();
         checkBreadths();
+        checkPrereqs();
         setCheckRules(false);
     }
 
@@ -417,6 +418,25 @@ export function AuditModal({plan, visible, setVisible}:
                         }
                     </tbody>
                 </Table>
+                <div>
+                    <div>
+                        <strong className="AuditLabel">CISC Prerequisites</strong>
+                    </div>
+                    {prereqs.map((p:Prereq, index:number) => {
+                        if (rules_violated.length){
+                            for (let i = 0; i<p.prereqs.length; i++){
+                                if (rules_violated[index][i]){
+                                    return(
+                                        <div>
+                                            {p.prereqs[i]} is a prerequisite for {p.course}
+                                        </div>
+                                    );
+                                }
+                            }
+                        }
+                    })
+                    }
+                </div>
             </Modal.Body>
         </Modal>
     );
