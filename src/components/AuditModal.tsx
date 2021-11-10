@@ -33,6 +33,7 @@ export function AuditModal({plan, visible, setVisible}:
     //Prerequisite rules
     const prereqs: Prereq[] = CISCprereqs as Prereq[];
     const [rules_violated, set_rules_violated] = useState<boolean[][]>([]);
+    const [missing_prereqs, set_missing_prereqs] = useState<boolean>(false);
     
     //Raw list of all courses (will be helpful for some checks)
     const allCourses: Course[] = [];
@@ -172,6 +173,19 @@ export function AuditModal({plan, visible, setVisible}:
             }
             //Add the results for this course
             rules_violated_temp.push(each_prereq);
+        }
+        //Are any prereqs missing? (For rendering "none missing" message)
+        set_missing_prereqs(false);
+        for (let i = 0; i<rules_violated_temp.length; i++){
+            for (let j = 0; j<rules_violated_temp[i].length; j++){
+                if (rules_violated_temp[i][j]){
+                    set_missing_prereqs(true);
+                    break;
+                }
+            }
+            if (missing_prereqs){
+                break;
+            }
         }
         //Update usestate
         set_rules_violated(rules_violated_temp);
@@ -419,17 +433,24 @@ export function AuditModal({plan, visible, setVisible}:
                 </Table>
                 <div>
                     <div>
-                        <strong className="AuditLabel">CISC Prerequisites</strong>
+                        <strong className="AuditLabel">CISC Prerequisites Missing</strong>
                     </div>
                     {prereqs.map((p:Prereq, index0:number) => {
                         return(
                             p.prereqs.map((req:string, index1:number) => {
                                 if (rules_violated.length){
                                     if(rules_violated[index0][index1]){
-                                        console.log(index0);
                                         return(
                                             <div>
                                                 {req} is a prerequisite for {p.course}
+                                            </div>
+                                        );
+                                    }
+                                    //If no rules are violated
+                                    if(!missing_prereqs && index0===prereqs.length-1 && index1 ===p.prereqs.length-1){
+                                        return(
+                                            <div>
+                                                None
                                             </div>
                                         );
                                     }
