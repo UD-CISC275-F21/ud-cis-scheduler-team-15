@@ -8,6 +8,8 @@ import HistoryCultural from "../assets/HistoryCultural.json";
 import SocialBehavioral from "../assets/SocialBehavioral.json";
 import Tech from "../assets/Tech.json";
 import COEupper from "../assets/COEupper.json";
+import CISCprereqs from "../assets/CISCprereqs.json";
+import { Prereq } from "../interfaces/prereq";
 
 export function AuditModal({plan, visible, setVisible}:
     {plan: Semester[];
@@ -27,6 +29,9 @@ export function AuditModal({plan, visible, setVisible}:
 
     //Get require courses for checking
     const reqCourses: Course[] = RequiredCourses as Course[];
+
+    //Prerequisite rules
+    const prereqs: Prereq[] = CISCprereqs as Prereq[];
     
     //Raw list of all courses (will be helpful for some checks)
     const allCourses: Course[] = [];
@@ -117,6 +122,10 @@ export function AuditModal({plan, visible, setVisible}:
         }
 
         setBreadth(temp_breadth);
+    }
+
+    function checkPrereqs():void{
+
     }
 
     //Does the list of courses contain any of the numbers in the list of course numbers?
