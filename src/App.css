@@ -163,4 +163,10 @@ table, th, td{
 
 .AuditLabel{
   font-size: x-large;
+  align-self: center;
+  text-align: center;
+}
+
+.BasicCenter{
+  text-align: center;
 }

@@ -8,6 +8,8 @@ import HistoryCultural from "../assets/HistoryCultural.json";
 import SocialBehavioral from "../assets/SocialBehavioral.json";
 import Tech from "../assets/Tech.json";
 import COEupper from "../assets/COEupper.json";
+import CISCprereqs from "../assets/CISCprereqs.json";
+import { Prereq } from "../interfaces/prereq";
 
 export function AuditModal({plan, visible, setVisible}:
     {plan: Semester[];
@@ -27,6 +29,11 @@ export function AuditModal({plan, visible, setVisible}:
 
     //Get require courses for checking
     const reqCourses: Course[] = RequiredCourses as Course[];
+
+    //Prerequisite rules
+    const prereqs: Prereq[] = CISCprereqs as Prereq[];
+    const [rules_violated, set_rules_violated] = useState<boolean[][]>([]);
+    const [missing_prereqs, set_missing_prereqs] = useState<boolean>(false);
     
     //Raw list of all courses (will be helpful for some checks)
     const allCourses: Course[] = [];
@@ -35,6 +42,17 @@ export function AuditModal({plan, visible, setVisible}:
             allCourses.push(plan[i].courses[j]);
         }
     }
+
+    //Matrix of the plan, only need the numbers (for prereq checks)
+    const plan_nums: string[][] = [[]];
+    for (let i = 0; i<plan.length; i++){
+        const sem_nums: string[] = [];
+        for (let j = 0; j<plan[i].courses.length; j++){
+            sem_nums.push(plan[i].courses[j].number);
+        }
+        plan_nums.push(sem_nums);
+    }
+
     
     //Checks for core courses
     function checkCore():void{
@@ -111,12 +129,67 @@ export function AuditModal({plan, visible, setVisible}:
             }
         }
         //if no additional breadth
-        console.log(temp_additional);
         if(!temp_additional[0].number){
             temp_breadth.push({number:"", name:"", credits:0});
         }
 
         setBreadth(temp_breadth);
+    }
+
+    function checkPrereqs():void{
+        //check each rule from the json file
+        const rules_violated_temp: boolean[][] = [];
+        for (let i = 0; i<prereqs.length; i++){
+            const each_prereq: boolean[] = [];
+            let semester_course_occurs = -1;
+            //Find the course
+            for (let j = 0; j<plan.length; j++){
+                if (isIn(plan[j].courses, [prereqs[i].course]).number){
+                    //Found it!
+                    semester_course_occurs = j;
+                    break;
+                }
+                //If it's not here, the rule can't be violated, so it's false for each course
+                if (j === plan.length-1){
+                    for (let k = 0; k<prereqs[i].prereqs.length; k++){
+                        each_prereq.push(false);
+                    }
+                    break;
+                }
+            }
+            //We found it, gotta see if the rules are followed
+            for (let j = 0; j<prereqs[i].prereqs.length; j++){
+                for (let k = 0; k<semester_course_occurs; k++){
+                    if(isIn(plan[k].courses, [prereqs[i].prereqs[j]]).number){
+                        //Prerequisite rule is satisfied
+                        each_prereq.push(false);
+                        break;
+                    }
+                    //Prereq not satisfied
+                    if (k === semester_course_occurs-1){
+                        each_prereq.push(true);
+                    }
+                }
+            }
+            //Add the results for this course
+            rules_violated_temp.push(each_prereq);
+        }
+        //Are any prereqs missing? (For rendering "none missing" message)
+        let missing_prereqs_temp = false;
+        for (let i = 0; i<rules_violated_temp.length; i++){
+            for (let j = 0; j<rules_violated_temp[i].length; j++){
+                if (rules_violated_temp[i][j]){
+                    missing_prereqs_temp = true;
+                    break;
+                }
+            }
+            if (missing_prereqs_temp){
+                break;
+            }
+        }
+        //Update usestate
+        set_missing_prereqs(missing_prereqs_temp);
+        set_rules_violated(rules_violated_temp);
     }
 
     //Does the list of courses contain any of the numbers in the list of course numbers?
@@ -160,6 +233,7 @@ export function AuditModal({plan, visible, setVisible}:
         checkCore();
         checkCISCElec();
         checkBreadths();
+        checkPrereqs();
         setCheckRules(false);
     }
 
@@ -169,7 +243,9 @@ export function AuditModal({plan, visible, setVisible}:
                 <Modal.Title>Schedule Audit</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <strong className="AuditLabel">Core Courses Missing</strong>
+                <div className="AuditLabel">
+                    <strong className="AuditLabel">Core Courses Missing</strong>
+                </div>
                 {missingCore.length?
                     <Table className="AuditTable" striped={true} bordered>
                         <thead>
@@ -197,9 +273,40 @@ export function AuditModal({plan, visible, setVisible}:
                             }
                             )}
                         </tbody>
-                    </Table>: <div>None</div>
+                    </Table>: <div className="BasicCenter">None</div>
                 }
-                <strong className="AuditLabel">CISC Electives (18 credits required)</strong>
+                <div>
+                    <div className="AuditLabel">
+                        <strong className="AuditLabel">CISC Prerequisites Missing</strong>
+                    </div>
+                    {prereqs.map((p:Prereq, index0:number) => {
+                        return(
+                            p.prereqs.map((req:string, index1:number) => {
+                                if (rules_violated.length){
+                                    if(rules_violated[index0][index1]){
+                                        return(
+                                            <div className="BasicCenter">
+                                                {req} is a prerequisite for {p.course}
+                                            </div>
+                                        );
+                                    }
+                                    //If no rules are violated
+                                    if(!missing_prereqs && index0===prereqs.length-1 && index1 ===p.prereqs.length-1){
+                                        return(
+                                            <div className="BasicCenter">
+                                                None
+                                            </div>
+                                        );
+                                    }
+                                }
+                            })
+                        );
+                    })
+                    }
+                </div>
+                <div className="AuditLabel">
+                    <strong className="AuditLabel">CISC Electives (18 credits required)</strong>
+                </div>
                 <Table className="AuditTable" striped={true} bordered>
                     <thead>
                         <tr>
@@ -227,10 +334,12 @@ export function AuditModal({plan, visible, setVisible}:
                         )}
                     </tbody>
                 </Table>
-                <div>
+                <div className="AuditLabel">
                     <strong className="AuditLabel">Breadth Electives</strong>
                 </div>
-                <strong className="AuditLabel">Arts and Humanities (3 credits required)</strong>
+                <div className="AuditLabel">
+                    <strong className="AuditLabel">Arts and Humanities (3 credits required)</strong>
+                </div>
                 <Table className="AuditTable" striped={true} bordered>
                     <thead>
                         <tr>
@@ -255,7 +364,9 @@ export function AuditModal({plan, visible, setVisible}:
                             :<tr></tr>}
                     </tbody>
                 </Table>
-                <strong className="AuditLabel">History and Cultural Change (3 credits required)</strong>
+                <div className="AuditLabel">
+                    <strong className="AuditLabel">History and Cultural Change (3 credits required)</strong>
+                </div>
                 <Table className="AuditTable" striped={true} bordered>
                     <thead>
                         <tr>
@@ -280,7 +391,9 @@ export function AuditModal({plan, visible, setVisible}:
                             :<tr></tr>}
                     </tbody>
                 </Table>
-                <strong className="AuditLabel">Social and Behavioral Science (3 credits required)</strong>
+                <div className="AuditLabel">
+                    <strong className="AuditLabel">Social and Behavioral Science (3 credits required)</strong>
+                </div>
                 <Table className="AuditTable" striped={true} bordered>
                     <thead>
                         <tr>
@@ -305,7 +418,9 @@ export function AuditModal({plan, visible, setVisible}:
                             :<tr></tr>}
                     </tbody>
                 </Table>
-                <strong className="AuditLabel">Mathematics, Natural Sciences, and Technology (3 credits required)</strong>
+                <div className="AuditLabel">
+                    <strong className="AuditLabel">Mathematics, Natural Sciences, and Technology (3 credits required)</strong>
+                </div>
                 <Table className="AuditTable" striped={true} bordered>
                     <thead>
                         <tr>
@@ -330,7 +445,9 @@ export function AuditModal({plan, visible, setVisible}:
                             :<tr></tr>}
                     </tbody>
                 </Table>
-                <strong className="AuditLabel">COE Additional Breadth (9 credits, 6 upper)</strong>
+                <div className="AuditLabel">
+                    <strong className="AuditLabel">COE Additional Breadth (9 credits, 6 upper)</strong>
+                </div>
                 <Table className="AuditTable" striped={true} bordered>
                     <thead>
                         <tr>
