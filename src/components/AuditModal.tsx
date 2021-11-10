@@ -128,7 +128,6 @@ export function AuditModal({plan, visible, setVisible}:
             }
         }
         //if no additional breadth
-        console.log(temp_additional);
         if(!temp_additional[0].number){
             temp_breadth.push({number:"", name:"", credits:0});
         }
@@ -422,18 +421,21 @@ export function AuditModal({plan, visible, setVisible}:
                     <div>
                         <strong className="AuditLabel">CISC Prerequisites</strong>
                     </div>
-                    {prereqs.map((p:Prereq, index:number) => {
-                        if (rules_violated.length){
-                            for (let i = 0; i<p.prereqs.length; i++){
-                                if (rules_violated[index][i]){
-                                    return(
-                                        <div>
-                                            {p.prereqs[i]} is a prerequisite for {p.course}
-                                        </div>
-                                    );
+                    {prereqs.map((p:Prereq, index0:number) => {
+                        return(
+                            p.prereqs.map((req:string, index1:number) => {
+                                if (rules_violated.length){
+                                    if(rules_violated[index0][index1]){
+                                        console.log(index0);
+                                        return(
+                                            <div>
+                                                {req} is a prerequisite for {p.course}
+                                            </div>
+                                        );
+                                    }
                                 }
-                            }
-                        }
+                            })
+                        );
                     })
                     }
                 </div>
