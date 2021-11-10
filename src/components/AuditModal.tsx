@@ -32,6 +32,7 @@ export function AuditModal({plan, visible, setVisible}:
 
     //Prerequisite rules
     const prereqs: Prereq[] = CISCprereqs as Prereq[];
+    const [rules_violated, set_rules_violated] = useState<boolean[][]>([]);
     
     //Raw list of all courses (will be helpful for some checks)
     const allCourses: Course[] = [];
@@ -40,6 +41,17 @@ export function AuditModal({plan, visible, setVisible}:
             allCourses.push(plan[i].courses[j]);
         }
     }
+
+    //Matrix of the plan, only need the numbers (for prereq checks)
+    const plan_nums: string[][] = [[]];
+    for (let i = 0; i<plan.length; i++){
+        const sem_nums: string[] = [];
+        for (let j = 0; j<plan[i].courses.length; j++){
+            sem_nums.push(plan[i].courses[j].number);
+        }
+        plan_nums.push(sem_nums);
+    }
+
     
     //Checks for core courses
     function checkCore():void{
@@ -125,7 +137,45 @@ export function AuditModal({plan, visible, setVisible}:
     }
 
     function checkPrereqs():void{
-
+        //check each rule from the json file
+        const rules_violated_temp: boolean[][] = [];
+        for (let i = 0; i<prereqs.length; i++){
+            const each_prereq: boolean[] = [];
+            let semester_course_occurs = -1;
+            //Find the course
+            for (let j = 0; j<plan.length; j++){
+                if (isIn(plan[j].courses, [prereqs[i].course]).number){
+                    //Found it!
+                    semester_course_occurs = j;
+                    break;
+                }
+                //If it's not here, the rule can't be violated, so it's false for each course
+                if (j === plan.length-1){
+                    for (let k = 0; k<prereqs[i].prereqs.length; k++){
+                        each_prereq.push(false);
+                    }
+                    break;
+                }
+            }
+            //We found it, gotta see if the rules are followed
+            for (let j = 0; j<prereqs[i].prereqs.length; j++){
+                for (let k = 0; k<semester_course_occurs; k++){
+                    if(isIn(plan[k].courses, [prereqs[i].prereqs[j]]).number){
+                        //Prerequisite rule is satisfied
+                        each_prereq.push(false);
+                        break;
+                    }
+                    //Prereq not satisfied
+                    if (k === semester_course_occurs-1){
+                        each_prereq.push(true);
+                    }
+                }
+            }
+            //Add the results for this course
+            rules_violated_temp.push(each_prereq);
+        }
+        //Update usestate
+        set_rules_violated(rules_violated_temp);
     }
 
     //Does the list of courses contain any of the numbers in the list of course numbers?
