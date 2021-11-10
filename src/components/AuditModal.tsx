@@ -272,6 +272,35 @@ export function AuditModal({plan, visible, setVisible}:
                         </tbody>
                     </Table>: <div>None</div>
                 }
+                <div>
+                    <div>
+                        <strong className="AuditLabel">CISC Prerequisites Missing</strong>
+                    </div>
+                    {prereqs.map((p:Prereq, index0:number) => {
+                        return(
+                            p.prereqs.map((req:string, index1:number) => {
+                                if (rules_violated.length){
+                                    if(rules_violated[index0][index1]){
+                                        return(
+                                            <div>
+                                                {req} is a prerequisite for {p.course}
+                                            </div>
+                                        );
+                                    }
+                                    //If no rules are violated
+                                    if(!missing_prereqs && index0===prereqs.length-1 && index1 ===p.prereqs.length-1){
+                                        return(
+                                            <div>
+                                                None
+                                            </div>
+                                        );
+                                    }
+                                }
+                            })
+                        );
+                    })
+                    }
+                </div>
                 <strong className="AuditLabel">CISC Electives (18 credits required)</strong>
                 <Table className="AuditTable" striped={true} bordered>
                     <thead>
@@ -431,35 +460,6 @@ export function AuditModal({plan, visible, setVisible}:
                         }
                     </tbody>
                 </Table>
-                <div>
-                    <div>
-                        <strong className="AuditLabel">CISC Prerequisites Missing</strong>
-                    </div>
-                    {prereqs.map((p:Prereq, index0:number) => {
-                        return(
-                            p.prereqs.map((req:string, index1:number) => {
-                                if (rules_violated.length){
-                                    if(rules_violated[index0][index1]){
-                                        return(
-                                            <div>
-                                                {req} is a prerequisite for {p.course}
-                                            </div>
-                                        );
-                                    }
-                                    //If no rules are violated
-                                    if(!missing_prereqs && index0===prereqs.length-1 && index1 ===p.prereqs.length-1){
-                                        return(
-                                            <div>
-                                                None
-                                            </div>
-                                        );
-                                    }
-                                }
-                            })
-                        );
-                    })
-                    }
-                </div>
             </Modal.Body>
         </Modal>
     );
