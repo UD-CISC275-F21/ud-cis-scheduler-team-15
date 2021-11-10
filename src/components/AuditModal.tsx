@@ -175,19 +175,20 @@ export function AuditModal({plan, visible, setVisible}:
             rules_violated_temp.push(each_prereq);
         }
         //Are any prereqs missing? (For rendering "none missing" message)
-        set_missing_prereqs(false);
+        let missing_prereqs_temp = false;
         for (let i = 0; i<rules_violated_temp.length; i++){
             for (let j = 0; j<rules_violated_temp[i].length; j++){
                 if (rules_violated_temp[i][j]){
-                    set_missing_prereqs(true);
+                    missing_prereqs_temp = true;
                     break;
                 }
             }
-            if (missing_prereqs){
+            if (missing_prereqs_temp){
                 break;
             }
         }
         //Update usestate
+        set_missing_prereqs(missing_prereqs_temp);
         set_rules_violated(rules_violated_temp);
     }
 
@@ -242,7 +243,9 @@ export function AuditModal({plan, visible, setVisible}:
                 <Modal.Title>Schedule Audit</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <strong className="AuditLabel">Core Courses Missing</strong>
+                <div className="AuditLabel">
+                    <strong className="AuditLabel">Core Courses Missing</strong>
+                </div>
                 {missingCore.length?
                     <Table className="AuditTable" striped={true} bordered>
                         <thead>
@@ -270,10 +273,10 @@ export function AuditModal({plan, visible, setVisible}:
                             }
                             )}
                         </tbody>
-                    </Table>: <div>None</div>
+                    </Table>: <div className="BasicCenter">None</div>
                 }
                 <div>
-                    <div>
+                    <div className="AuditLabel">
                         <strong className="AuditLabel">CISC Prerequisites Missing</strong>
                     </div>
                     {prereqs.map((p:Prereq, index0:number) => {
@@ -282,7 +285,7 @@ export function AuditModal({plan, visible, setVisible}:
                                 if (rules_violated.length){
                                     if(rules_violated[index0][index1]){
                                         return(
-                                            <div>
+                                            <div className="BasicCenter">
                                                 {req} is a prerequisite for {p.course}
                                             </div>
                                         );
@@ -290,7 +293,7 @@ export function AuditModal({plan, visible, setVisible}:
                                     //If no rules are violated
                                     if(!missing_prereqs && index0===prereqs.length-1 && index1 ===p.prereqs.length-1){
                                         return(
-                                            <div>
+                                            <div className="BasicCenter">
                                                 None
                                             </div>
                                         );
@@ -301,7 +304,9 @@ export function AuditModal({plan, visible, setVisible}:
                     })
                     }
                 </div>
-                <strong className="AuditLabel">CISC Electives (18 credits required)</strong>
+                <div className="AuditLabel">
+                    <strong className="AuditLabel">CISC Electives (18 credits required)</strong>
+                </div>
                 <Table className="AuditTable" striped={true} bordered>
                     <thead>
                         <tr>
@@ -329,10 +334,12 @@ export function AuditModal({plan, visible, setVisible}:
                         )}
                     </tbody>
                 </Table>
-                <div>
+                <div className="AuditLabel">
                     <strong className="AuditLabel">Breadth Electives</strong>
                 </div>
-                <strong className="AuditLabel">Arts and Humanities (3 credits required)</strong>
+                <div className="AuditLabel">
+                    <strong className="AuditLabel">Arts and Humanities (3 credits required)</strong>
+                </div>
                 <Table className="AuditTable" striped={true} bordered>
                     <thead>
                         <tr>
@@ -357,7 +364,9 @@ export function AuditModal({plan, visible, setVisible}:
                             :<tr></tr>}
                     </tbody>
                 </Table>
-                <strong className="AuditLabel">History and Cultural Change (3 credits required)</strong>
+                <div className="AuditLabel">
+                    <strong className="AuditLabel">History and Cultural Change (3 credits required)</strong>
+                </div>
                 <Table className="AuditTable" striped={true} bordered>
                     <thead>
                         <tr>
@@ -382,7 +391,9 @@ export function AuditModal({plan, visible, setVisible}:
                             :<tr></tr>}
                     </tbody>
                 </Table>
-                <strong className="AuditLabel">Social and Behavioral Science (3 credits required)</strong>
+                <div className="AuditLabel">
+                    <strong className="AuditLabel">Social and Behavioral Science (3 credits required)</strong>
+                </div>
                 <Table className="AuditTable" striped={true} bordered>
                     <thead>
                         <tr>
@@ -407,7 +418,9 @@ export function AuditModal({plan, visible, setVisible}:
                             :<tr></tr>}
                     </tbody>
                 </Table>
-                <strong className="AuditLabel">Mathematics, Natural Sciences, and Technology (3 credits required)</strong>
+                <div className="AuditLabel">
+                    <strong className="AuditLabel">Mathematics, Natural Sciences, and Technology (3 credits required)</strong>
+                </div>
                 <Table className="AuditTable" striped={true} bordered>
                     <thead>
                         <tr>
@@ -432,7 +445,9 @@ export function AuditModal({plan, visible, setVisible}:
                             :<tr></tr>}
                     </tbody>
                 </Table>
-                <strong className="AuditLabel">COE Additional Breadth (9 credits, 6 upper)</strong>
+                <div className="AuditLabel">
+                    <strong className="AuditLabel">COE Additional Breadth (9 credits, 6 upper)</strong>
+                </div>
                 <Table className="AuditTable" striped={true} bordered>
                     <thead>
                         <tr>
