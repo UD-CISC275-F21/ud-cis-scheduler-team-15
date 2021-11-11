@@ -12,16 +12,19 @@ function App(): JSX.Element {
     const [visible, setVisible] = useState<boolean>(true);
     const [auditVis, setAuditVis] = useState<boolean>(false);
     useEffect(() => {
-        const json = localStorage.getItem("localplan");
-        const savedPlan = JSON.parse(json || "[]");
+        const json = sessionStorage.getItem("localplan");
+        const savedPlan = JSON.parse(json || "{}");
         if(savedPlan){
             setPlan(savedPlan);
         }
     }, []);
     useEffect(() => {
-        const json = JSON.stringify(plan);
-        localStorage.setItem("localplan", json);
+        if(plan){
+            const json = JSON.stringify(plan);
+            sessionStorage.setItem("localplan", json);
+        }
     }, [plan]);
+    
     function addSemester(){
         let yearType = YearType.FirstYear;
         let semesterType = SemesterType.Fall;
