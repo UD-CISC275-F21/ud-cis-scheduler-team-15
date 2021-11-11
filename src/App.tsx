@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import COURSES from "./assets/courses.json";
 import { Semester, SemesterType, YearType } from "./interfaces/semester";
