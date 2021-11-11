@@ -12,7 +12,6 @@ function App(): JSX.Element {
     const [visible, setVisible] = useState<boolean>(true);
     const [auditVis, setAuditVis] = useState<boolean>(false);
     function addSemester(){
-        console.log("add semester");
         let yearType = YearType.FirstYear;
         let semesterType = SemesterType.Fall;
         if(plan.length === 0){
