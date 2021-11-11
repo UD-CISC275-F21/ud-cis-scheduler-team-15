@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import COURSES from "./assets/courses.json";
 import { Semester, SemesterType, YearType } from "./interfaces/semester";
@@ -11,17 +11,6 @@ function App(): JSX.Element {
     const [plan, setPlan] = useState<Semester[]>(COURSES as Semester[]);
     const [visible, setVisible] = useState<boolean>(true);
     const [auditVis, setAuditVis] = useState<boolean>(false);
-    useEffect(() => {
-        const json = localStorage.getItem("localplan");
-        const savedPlan = JSON.parse(json || "[]");
-        if(savedPlan){
-            setPlan(savedPlan);
-        }
-    }, []);
-    useEffect(() => {
-        const json = JSON.stringify(plan);
-        localStorage.setItem("localplan", json);
-    }, [plan]);
     function addSemester(){
         console.log("add semester");
         let yearType = YearType.FirstYear;
