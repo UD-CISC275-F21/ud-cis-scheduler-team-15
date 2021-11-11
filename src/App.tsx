@@ -23,6 +23,7 @@ function App(): JSX.Element {
         localStorage.setItem("localplan", json);
     }, [plan]);
     function addSemester(){
+        console.log("add semester");
         let yearType = YearType.FirstYear;
         let semesterType = SemesterType.Fall;
         if(plan.length === 0){
