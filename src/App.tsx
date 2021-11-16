@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import COURSES from "./assets/courses.json";
 import { Semester, SemesterType, YearType } from "./interfaces/semester";
@@ -52,8 +52,21 @@ function App(): JSX.Element {
         hiddenElement.download = "Schedule.csv";  
         hiddenElement.click();  
     }
-
-
+    useEffect(() => {
+        if(sessionStorage.getItem("localplan") != null){
+            const json = sessionStorage.getItem("localplan");
+            const savedPlan = JSON.parse(json || "");
+            if(savedPlan){
+                setPlan(savedPlan);
+            }
+        }
+    }, []);
+    useEffect(() => {
+        if(plan){
+            const json = JSON.stringify(plan);
+            sessionStorage.setItem("localplan", json);
+        }
+    }, [plan]);
     return (
         <div className="App">
             <p>UD CIS Scheduler</p>
