@@ -26,7 +26,7 @@ export function SemesterTable({sem_index, plan, setPlan}:
                     }} className="SemesterHeader">
                     <td className = "split">
                         <strong className="poolLabel">{plan[sem_index].semester}</strong>
-                        <button className = "dotButton" style = {dotsStyle} onClick = {()=>setChangePromptVis(true)}>
+                        <button aria-label = "Sem Menu Dots" className = "dotButton" style = {dotsStyle} onClick = {()=>setChangePromptVis(true)}>
                             <div className = "dot"></div>
                             <div className = "dot"></div>
                             <div className = "dot"></div>
@@ -75,7 +75,7 @@ export function SemesterTable({sem_index, plan, setPlan}:
                     </td>
                     <td className = "split">
                         <strong className="semLabel">{plan[sem_index].semester}</strong>
-                        <button className = "dotButton" style = {dotsStyle} onClick = {()=>setChangePromptVis(true)}>
+                        <button aria-label = "Sem Menu Dots" className = "dotButton" style = {dotsStyle} onClick = {()=>setChangePromptVis(true)}>
                             <div className = "dot"></div>
                             <div className = "dot"></div>
                             <div className = "dot"></div>
