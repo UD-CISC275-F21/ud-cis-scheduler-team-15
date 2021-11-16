@@ -64,5 +64,5 @@ test("Removing CISC 108 causes it to apppear in missing courses, and the prereq 
     const CISC108_missing = screen.getByText("Introduction to Computer Science I");
     const CISC181_violation = screen.getByText("CISC108 is a prerequisite for CISC181");
     const CISC210_violation = screen.getByText("CISC108 is a prerequisite for CISC210");
-    checkElements([CISC108_missing, CISC181_violation, CISC210_violation])
+    checkElements([CISC108_missing, CISC181_violation, CISC210_violation]);
 });
