@@ -46,7 +46,6 @@ function App(): JSX.Element {
             return semCourse;
         }
         const csvContent = "data:text/csv;charset=utf-8," + "Year," + "Semester," + "ID," + "Title," + "Credits," + plan.map((s: Semester) => "\n" + s.year + "," + s.semester + "," + semCourses(s.courses));
-        document.write(csvContent);
         const hiddenElement = document.createElement("a");  
         hiddenElement.href = encodeURI(csvContent);  
         hiddenElement.target = "_blank";
