@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import App from "../App";
-import userEvent from '@testing-library/user-event'
+import userEvent from "@testing-library/user-event";
 
 //Give this an array of elements to see if they are in the doc
 function checkElements(elements: HTMLElement[]):void{
@@ -10,10 +10,10 @@ function checkElements(elements: HTMLElement[]):void{
     }
 }
 
-describe('App', () => {
+describe("App", () => {
     beforeEach(() => {
-      render(<App />);
-    })
+        render(<App />);
+    });
 
     it("Can edit course number, name, and credits", () => {
         const CISC108:HTMLElement= screen.getByText("CISC108");

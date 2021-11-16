@@ -1,7 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import App from "./App";
-import userEvent from '@testing-library/user-event'
 
 function renderAndCloseWelcome():void{  
     const exit_button = screen.getByLabelText("Close");
@@ -20,10 +19,10 @@ function checkElements(elements: HTMLElement[]):void{
     }
 }
 
-describe('App', () => {
+describe("App", () => {
     beforeEach(() => {
-      render(<App />);
-    })
+        render(<App />);
+    });
 
     it("renders UD CIS Scheduler text", () => {
         const linkElement = screen.getByText(/UD CIS Scheduler/i);
@@ -37,7 +36,7 @@ describe('App', () => {
         const dots_button = CISC108.parentElement?.getElementsByClassName("split")[0].getElementsByClassName("dotButton")[0] as HTMLElement;
         dots_button.click();
         const change_data = screen.getByTestId("changeData");
-        expect(change_data).toBeInTheDocument
+        expect(change_data).toBeInTheDocument;
 
     });
 
