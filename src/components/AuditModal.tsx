@@ -238,7 +238,7 @@ export function AuditModal({plan, visible, setVisible}:
     }
 
     return(
-        <Modal size="lg" show={visible} onHide = {hide}>
+        <Modal size="lg" show={visible} onHide = {hide} data-testid = "auditModal">
             <Modal.Header closeButton>
                 <Modal.Title>Schedule Audit</Modal.Title>
             </Modal.Header>
@@ -273,7 +273,7 @@ export function AuditModal({plan, visible, setVisible}:
                             }
                             )}
                         </tbody>
-                    </Table>: <div className="BasicCenter">None</div>
+                    </Table>: <div className="BasicCenter" data-testid = "noCoreMissing">None</div>
                 }
                 <div>
                     <div className="AuditLabel">
@@ -293,7 +293,7 @@ export function AuditModal({plan, visible, setVisible}:
                                     //If no rules are violated
                                     if(!missing_prereqs && index0===prereqs.length-1 && index1 ===p.prereqs.length-1){
                                         return(
-                                            <div className="BasicCenter">
+                                            <div className="BasicCenter" data-testid = "noPrereqsMissing">
                                                 None
                                             </div>
                                         );
@@ -357,7 +357,7 @@ export function AuditModal({plan, visible, setVisible}:
                     <tbody>
                         {breadth[0]?
                             <tr>
-                                <td className="text-center">{breadth[0].number}</td>
+                                <td className="text-center" data-testid = "artsHumanities">{breadth[0].number}</td>
                                 <td className="text-center">{breadth[0].name}</td>
                                 <td className="text-center">{breadth[0].credits}</td>
                             </tr>
@@ -384,7 +384,7 @@ export function AuditModal({plan, visible, setVisible}:
                     <tbody>
                         {breadth[1]?
                             <tr>
-                                <td className="text-center">{breadth[1].number}</td>
+                                <td className="text-center" data-testid = "history">{breadth[1].number}</td>
                                 <td className="text-center">{breadth[1].name}</td>
                                 <td className="text-center">{breadth[1].credits}</td>
                             </tr>
@@ -411,7 +411,7 @@ export function AuditModal({plan, visible, setVisible}:
                     <tbody>
                         {breadth[2]?
                             <tr>
-                                <td className="text-center">{breadth[2].number}</td>
+                                <td className="text-center" data-testid = "social">{breadth[2].number}</td>
                                 <td className="text-center">{breadth[2].name}</td>
                                 <td className="text-center">{breadth[2].credits}</td>
                             </tr>
@@ -438,7 +438,7 @@ export function AuditModal({plan, visible, setVisible}:
                     <tbody>
                         {breadth[3]?
                             <tr>
-                                <td className="text-center">{breadth[3].number}</td>
+                                <td className="text-center" data-testid = "technical">{breadth[3].number}</td>
                                 <td className="text-center">{breadth[3].name}</td>
                                 <td className="text-center">{breadth[3].credits}</td>
                             </tr>

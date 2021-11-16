@@ -1,17 +1,19 @@
 
 import React from "react";
 import {Modal} from "react-bootstrap";
-import ReactDOM from "react-dom";
-import App from "../App";
+//import ReactDOM, { render } from "react-dom";
+//import App from "../App";
 import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
-export function ChangeData({index, sem_index, plan, setPlan, visible, setVisible}:
+
+export function ChangeData({index, sem_index, plan, setPlan, visible, setVisible, setRenderSemester}:
     {index: number;
     sem_index:number;
     plan: Semester[];
     setPlan: (plan: Semester[])=>void;
     visible: boolean;
     setVisible: (visible: boolean)=>void;
+    setRenderSemester: (renderSemester: boolean)=>void;
     }): JSX.Element{
 
     function setCourse(c: Course):void{
@@ -41,13 +43,15 @@ export function ChangeData({index, sem_index, plan, setPlan, visible, setVisible
         temp_plan[sem_index] = temp_sem;
         setPlan(temp_plan);    
         hide();
-        //Rerender everything!!!
-        ReactDOM.render(
+        setRenderSemester(true);
+        //Rerender everything!!
+        /*ReactDOM.render(
             <React.StrictMode>
                 <App />
             </React.StrictMode>,
             document.getElementById("root")
-        );    
+        );
+        */
     }
 
     return(
