@@ -37,8 +37,8 @@ function App(): JSX.Element {
     function showAudit():void{
         setAuditVis(true);
     }
-    function RemoveAllSemesters(){
-        setPlan([]);
+    function RemoveAllSemesters():void{
+        setPlan(plan.filter(s => s.year === "Pool of Courses"));
     }
     function download(){
         function semCourses(c: Course[]){
