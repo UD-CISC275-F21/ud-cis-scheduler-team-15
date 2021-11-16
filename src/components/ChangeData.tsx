@@ -55,7 +55,7 @@ export function ChangeData({index, sem_index, plan, setPlan, visible, setVisible
     }
 
     return(
-        <Modal show={visible} onHide = {hide}>
+        <Modal show={visible} onHide = {hide} data-testid="changeData">
             <Modal.Header closeButton>
                 <Modal.Title>Edit Course Info</Modal.Title>
             </Modal.Header>
@@ -63,19 +63,19 @@ export function ChangeData({index, sem_index, plan, setPlan, visible, setVisible
             <Modal.Body>
                 <div className="dataEditorLabel">
                     <strong>Edit Course Number:</strong>
-                    <input className="dataInput" id="numberUpdate" type="text" defaultValue={plan[sem_index].courses[index].number}></input>
+                    <input className="dataInput" id="numberUpdate" data-testid="numberUpdate" type="text" defaultValue={plan[sem_index].courses[index].number}></input>
                 </div>
                 <div className="dataEditorLabel">
                     <strong>Edit Course Name:</strong>
-                    <input className="dataInput" id="nameUpdate" defaultValue={plan[sem_index].courses[index].name}></input>
+                    <input className="dataInput" id="nameUpdate" data-testid="nameUpdate" defaultValue={plan[sem_index].courses[index].name}></input>
                 </div>
                 <div className="dataEditorLabel">
                     <strong>Edit Credits:</strong>
                     <div>
-                        <input className="dataInputCred" id="creditsUpdate" type="number" defaultValue={plan[sem_index].courses[index].credits}></input>
+                        <input className="dataInputCred" id="creditsUpdate" data-testid="creditsUpdate" type="number" defaultValue={plan[sem_index].courses[index].credits}></input>
                     </div>
                 </div>
-                <button className="saveChanges" onClick={() => update()}>Save Changes</button>
+                <button className="saveChanges" data-testid = "saveCourseChanges" onClick={() => update()}>Save Changes</button>
                 <button className="deleteCourse" onClick={() => del()}>Delete Course</button>
             </Modal.Body>
         </Modal>
