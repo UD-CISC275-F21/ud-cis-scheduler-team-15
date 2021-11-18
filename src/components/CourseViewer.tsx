@@ -22,7 +22,7 @@ export function CourseViewer({index, sem_index, plan, setPlan, setRenderSemester
     
     return (
         <>
-            <td className="courseNum"
+            <td className="courseNum" aria-label="Course Number"
                 onMouseEnter={() => {
                     setDotsStyle({display: "block"});
                 }}
@@ -32,7 +32,7 @@ export function CourseViewer({index, sem_index, plan, setPlan, setRenderSemester
                     plan[sem_index].courses[index].number
                 }
             </td>
-            <td className="courseName"
+            <td className="courseName" aria-label="Course Name"
                 onMouseEnter={() => {
                     setDotsStyle({display: "block"});
                 }}
@@ -42,7 +42,7 @@ export function CourseViewer({index, sem_index, plan, setPlan, setRenderSemester
                     plan[sem_index].courses[index].name
                 }
             </td>
-            <td className = "split"
+            <td className = "split" aria-label="Credits"
                 // Citation: https://stackoverflow.com/questions/61126014/how-to-show-button-while-hover-over-box-using-react
                 onMouseEnter={() => {
                     setDotsStyle({display: "block"});

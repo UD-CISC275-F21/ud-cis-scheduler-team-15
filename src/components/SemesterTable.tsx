@@ -22,7 +22,7 @@ export function SemesterTable({sem_index, plan, setPlan}:
     if ((plan[sem_index].year === "Pool of Courses") || (plan[sem_index].semester === "Pool of Courses")) {
         return (
             <div className = "SemesterTable">
-                <table // Citation: https://stackoverflow.com/questions/61126014/how-to-show-button-while-hover-over-box-using-react
+                <table data-testid="Header"// Citation: https://stackoverflow.com/questions/61126014/how-to-show-button-while-hover-over-box-using-react
                     onMouseEnter={() => {
                         setDotsStyle({display: "block"});
                     }}
@@ -73,7 +73,7 @@ export function SemesterTable({sem_index, plan, setPlan}:
     } else {
         return (
             <div className = "SemesterTable">
-                <table // Citation: https://stackoverflow.com/questions/61126014/how-to-show-button-while-hover-over-box-using-react
+                <table data-testid="Header"// Citation: https://stackoverflow.com/questions/61126014/how-to-show-button-while-hover-over-box-using-react
                     onMouseEnter={() => {
                         setDotsStyle({display: "block"});
                     }}
