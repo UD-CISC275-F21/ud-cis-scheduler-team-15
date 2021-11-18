@@ -29,14 +29,18 @@ export function SemesterTable({sem_index, plan, setPlan}:
                     onMouseLeave={() => {
                         setDotsStyle({display: "none"});
                     }} className="SemesterHeader">
-                    <td className = "split">
-                        <strong className="poolLabel">{plan[sem_index].semester}</strong>
-                        <button className = "dotButton" style = {dotsStyle} onClick = {()=>setChangePromptVis(true)}>
-                            <div className = "dot"></div>
-                            <div className = "dot"></div>
-                            <div className = "dot"></div>
-                        </button>
-                    </td>
+                    <tbody>
+                        <tr>
+                            <td className = "split">
+                                <strong className="poolLabel">{plan[sem_index].semester}</strong>
+                                <button aria-label = "Sem Menu Dots" className = "dotButton" style = {dotsStyle} onClick = {()=>setChangePromptVis(true)}>
+                                    <div className = "dot"></div>
+                                    <div className = "dot"></div>
+                                    <div className = "dot"></div>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
                 <SemesterMenu sem_index={sem_index} plan={plan} setPlan={setPlan} semMenuVis={changePromptVis} setSemMenuVis={setChangePromptVis}></SemesterMenu>
     
@@ -57,10 +61,11 @@ export function SemesterTable({sem_index, plan, setPlan}:
                     <tbody>
                         {plan[sem_index].courses.map((c:Course, index:number) => { 
                             return (
-                                <CourseViewer key={index} index={index} sem_index={sem_index} plan={plan} setPlan={setPlan} setRenderSemester={setRenderSemester}></CourseViewer>
+                                <tr key={index} aria-label="Course Viewer">
+                                    <CourseViewer index={index} sem_index={sem_index} plan={plan} setPlan={setPlan} setRenderSemester={setRenderSemester}></CourseViewer>
+                                </tr>
                             );
-                        }
-                        )}
+                        })}
                     </tbody>
                 </Table>
             </div>
@@ -75,17 +80,21 @@ export function SemesterTable({sem_index, plan, setPlan}:
                     onMouseLeave={() => {
                         setDotsStyle({display: "none"});
                     }} className="SemesterHeader">
-                    <td className="yearLabel">
-                        <strong>{plan[sem_index].year}</strong>
-                    </td>
-                    <td className = "split">
-                        <strong className="semLabel">{plan[sem_index].semester}</strong>
-                        <button className = "dotButton" style = {dotsStyle} onClick = {()=>setChangePromptVis(true)}>
-                            <div className = "dot"></div>
-                            <div className = "dot"></div>
-                            <div className = "dot"></div>
-                        </button>
-                    </td>
+                    <tbody>
+                        <tr>
+                            <td className="yearLabel">
+                                <strong>{plan[sem_index].year}</strong>
+                            </td>
+                            <td className = "split">
+                                <strong className="semLabel">{plan[sem_index].semester}</strong>
+                                <button aria-label = "Sem Menu Dots" className = "dotButton" style = {dotsStyle} onClick = {()=>setChangePromptVis(true)}>
+                                    <div className = "dot"></div>
+                                    <div className = "dot"></div>
+                                    <div className = "dot"></div>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
                 <SemesterMenu sem_index={sem_index} plan={plan} setPlan={setPlan} semMenuVis={changePromptVis} setSemMenuVis={setChangePromptVis}></SemesterMenu>
     
@@ -106,14 +115,14 @@ export function SemesterTable({sem_index, plan, setPlan}:
                     <tbody>
                         {plan[sem_index].courses.map((c:Course, index:number) => { 
                             return (
-                                <CourseViewer key={index} index={index} sem_index={sem_index} plan={plan} setPlan={setPlan} setRenderSemester={setRenderSemester}></CourseViewer>
+                                <tr key={index} aria-label="Course Viewer">
+                                    <CourseViewer index={index} sem_index={sem_index} plan={plan} setPlan={setPlan} setRenderSemester={setRenderSemester}></CourseViewer>
+                                </tr>
                             );
-                        }
-                        )}
+                        })}
                     </tbody>
                 </Table>
             </div>
         );
     }
-    
 }
