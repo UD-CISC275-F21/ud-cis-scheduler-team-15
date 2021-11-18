@@ -8,7 +8,7 @@ describe("Semester Menu", () => {
         render(<App />);
         const button = screen.getByRole('button', { name: "Close" });
         button.click(); // Closes welcome modal
-    })
+    });
 
     it("is not visible before menu is opened", () => {
         const header = screen.queryByText(/Add Course to Semester/);
@@ -19,7 +19,7 @@ describe("Semester Menu", () => {
         expect(deleteCourses).not.toBeVisible;
         const deleteSemester = screen.queryByText(/Delete semester/);
         expect(deleteSemester).not.toBeVisible;
-    })
+    });
 
     it("is visible after button is clicked", () => {
         const semMenuDots = screen.getAllByLabelText("Sem Menu Dots"); // Stores all semester menu buttons in a variable
@@ -32,7 +32,7 @@ describe("Semester Menu", () => {
         expect(deleteCourses).toBeVisible;
         const deleteSemester = screen.getByText(/Delete semester/);
         expect(deleteSemester).toBeVisible;
-    })
+    });
 
     it("is not visible after menu is closed", () => {
         const semMenuDots = screen.getAllByLabelText("Sem Menu Dots");
@@ -47,7 +47,7 @@ describe("Semester Menu", () => {
         expect(deleteCourses).not.toBeVisible;
         const deleteSemester = screen.queryByText(/Delete semester/);
         expect(deleteSemester).not.toBeVisible;
-    })
+    });
 
     it("can add a blank course", () => {
         expect(screen.queryByText("0")).not.toBeInTheDocument;
@@ -57,7 +57,7 @@ describe("Semester Menu", () => {
         addCourse.click();
         const newCourse = screen.getByText("0");
         expect(newCourse).toBeInTheDocument;
-    })
+    });
 
     it("can delete all courses from semester", () => {
         const semester = screen.getAllByLabelText("Semester Table")[0];
@@ -70,7 +70,7 @@ describe("Semester Menu", () => {
         deleteCourses.click();
         const emptySemester = screen.getAllByLabelText("Semester Table")[0];
         expect(queryAllByLabelText(emptySemester, "Course Viewer")).toStrictEqual([]);
-    })
+    });
 
     it("can delete a semester", () => {
         const semester = screen.getAllByLabelText("Semester Table")[0];
@@ -79,5 +79,5 @@ describe("Semester Menu", () => {
         const deleteSemester = screen.getByText(/Delete semester/);
         deleteSemester.click();
         expect(semester).not.toBeInTheDocument;
-    })
-})
+    });
+});
