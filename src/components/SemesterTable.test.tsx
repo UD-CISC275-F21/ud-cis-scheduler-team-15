@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { getAllByLabelText, getByTestId, queryByTestId, getByText, getByLabelText } from "@testing-library/dom";
 import App from "../App";
-import userEvent from '@testing-library/user-event'
+import userEvent from "@testing-library/user-event";
 
 describe("App", () => {
     beforeEach(() => {
