@@ -12,6 +12,7 @@ export function SemesterMenu({sem_index, plan, setPlan, semMenuVis, setSemMenuVi
     setSemMenuVis: (semMenuVis: boolean)=>void}
 ):JSX.Element{
 
+
     const hide = () => setSemMenuVis(false);
 
     // clears a semester's courses by replacing it with an empty semester

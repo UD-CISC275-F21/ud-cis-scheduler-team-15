@@ -13,6 +13,11 @@ export function SemesterTable({sem_index, plan, setPlan}:
 
     const [dotsStyle, setDotsStyle] = useState({display: "none"});
     const [changePromptVis, setChangePromptVis] = useState<boolean>(false);
+    const [renderSemester, setRenderSemester] = useState<boolean>(false);
+
+    if (renderSemester){
+        setRenderSemester(false);
+    }
 
     if ((plan[sem_index].year === "Pool of Courses") || (plan[sem_index].semester === "Pool of Courses")) {
         return (
@@ -57,7 +62,7 @@ export function SemesterTable({sem_index, plan, setPlan}:
                         {plan[sem_index].courses.map((c:Course, index:number) => { 
                             return (
                                 <tr key={index} aria-label="Course Viewer">
-                                    <CourseViewer index={index} sem_index={sem_index} plan={plan} setPlan={setPlan}></CourseViewer>
+                                    <CourseViewer index={index} sem_index={sem_index} plan={plan} setPlan={setPlan} setRenderSemester={setRenderSemester}></CourseViewer>
                                 </tr>
                             );
                         })}
@@ -111,7 +116,7 @@ export function SemesterTable({sem_index, plan, setPlan}:
                         {plan[sem_index].courses.map((c:Course, index:number) => { 
                             return (
                                 <tr key={index} aria-label="Course Viewer">
-                                    <CourseViewer index={index} sem_index={sem_index} plan={plan} setPlan={setPlan}></CourseViewer>
+                                    <CourseViewer index={index} sem_index={sem_index} plan={plan} setPlan={setPlan} setRenderSemester={setRenderSemester}></CourseViewer>
                                 </tr>
                             );
                         })}

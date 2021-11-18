@@ -1,8 +1,9 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import COURSES from "./assets/courses.json";
 import { Semester, SemesterType, YearType } from "./interfaces/semester";
+import { Course } from "./interfaces/course";
 import { Welcome } from "./components/Welcome";
 import { PlanViewer } from "./components/PlanViewer";
 import { AuditModal } from "./components/AuditModal";
@@ -36,16 +37,43 @@ function App(): JSX.Element {
     function showAudit():void{
         setAuditVis(true);
     }
-    function RemoveAllSemesters(){
-        setPlan([]);
+    function RemoveAllSemesters():void{
+        setPlan(plan.filter(s => s.year === "Pool of Courses"));
     }
-
+    function download(){
+        function semCourses(c: Course[]){
+            const semCourse = c.map((q: Course) => q.number + "," + q.name + "," + q.credits);
+            return semCourse;
+        }
+        const csvContent = "data:text/csv;charset=utf-8," + "Year," + "Semester," + "ID," + "Title," + "Credits," + plan.map((s: Semester) => "\n" + s.year + "," + s.semester + "," + semCourses(s.courses));
+        const hiddenElement = document.createElement("a");  
+        hiddenElement.href = encodeURI(csvContent);  
+        hiddenElement.target = "_blank";
+        hiddenElement.download = "Schedule.csv";  
+        hiddenElement.click();  
+    }
+    useEffect(() => {
+        if(sessionStorage.getItem("localplan") != null){
+            const json = sessionStorage.getItem("localplan");
+            const savedPlan = JSON.parse(json || "");
+            if(savedPlan){
+                setPlan(savedPlan);
+            }
+        }
+    }, []);
+    useEffect(() => {
+        if(plan){
+            const json = JSON.stringify(plan);
+            sessionStorage.setItem("localplan", json);
+        }
+    }, [plan]);
     return (
         <div className="App">
             <p>UD CIS Scheduler</p>
             <Button onClick = {addSemester}>Add Semester</Button>
             <Button onClick= {RemoveAllSemesters}>Remove All Semesters</Button>
             <Button onClick= {showAudit}>Audit</Button>
+            <Button onClick= {download}>Download</Button>
             <PlanViewer plan={plan} setPlan={setPlan}></PlanViewer>
             <Welcome visible = {visible} setVisible = {setVisible}></Welcome>
             <AuditModal plan={plan} visible={auditVis} setVisible={setAuditVis}></AuditModal>

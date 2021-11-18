@@ -1,17 +1,19 @@
 
 import React from "react";
 import {Modal} from "react-bootstrap";
-import ReactDOM from "react-dom";
-import App from "../App";
+//import ReactDOM, { render } from "react-dom";
+//import App from "../App";
 import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
-export function ChangeData({index, sem_index, plan, setPlan, visible, setVisible}:
+
+export function ChangeData({index, sem_index, plan, setPlan, visible, setVisible, setRenderSemester}:
     {index: number;
     sem_index:number;
     plan: Semester[];
     setPlan: (plan: Semester[])=>void;
     visible: boolean;
     setVisible: (visible: boolean)=>void;
+    setRenderSemester: (renderSemester: boolean)=>void;
     }): JSX.Element{
 
     function setCourse(c: Course):void{
@@ -41,17 +43,19 @@ export function ChangeData({index, sem_index, plan, setPlan, visible, setVisible
         temp_plan[sem_index] = temp_sem;
         setPlan(temp_plan);    
         hide();
-        //Rerender everything!!!
-        ReactDOM.render(
+        setRenderSemester(true);
+        //Rerender everything!!
+        /*ReactDOM.render(
             <React.StrictMode>
                 <App />
             </React.StrictMode>,
             document.getElementById("root")
-        );    
+        );
+        */
     }
 
     return(
-        <Modal show={visible} onHide = {hide}>
+        <Modal show={visible} onHide = {hide} data-testid="changeData">
             <Modal.Header closeButton>
                 <Modal.Title>Edit Course Info</Modal.Title>
             </Modal.Header>
@@ -59,19 +63,19 @@ export function ChangeData({index, sem_index, plan, setPlan, visible, setVisible
             <Modal.Body>
                 <div className="dataEditorLabel">
                     <strong>Edit Course Number:</strong>
-                    <input className="dataInput" id="numberUpdate" type="text" defaultValue={plan[sem_index].courses[index].number}></input>
+                    <input className="dataInput" id="numberUpdate" data-testid="numberUpdate" type="text" defaultValue={plan[sem_index].courses[index].number}></input>
                 </div>
                 <div className="dataEditorLabel">
                     <strong>Edit Course Name:</strong>
-                    <input className="dataInput" id="nameUpdate" defaultValue={plan[sem_index].courses[index].name}></input>
+                    <input className="dataInput" id="nameUpdate" data-testid="nameUpdate" defaultValue={plan[sem_index].courses[index].name}></input>
                 </div>
                 <div className="dataEditorLabel">
                     <strong>Edit Credits:</strong>
                     <div>
-                        <input className="dataInputCred" id="creditsUpdate" type="number" defaultValue={plan[sem_index].courses[index].credits}></input>
+                        <input className="dataInputCred" id="creditsUpdate" data-testid="creditsUpdate" type="number" defaultValue={plan[sem_index].courses[index].credits}></input>
                     </div>
                 </div>
-                <button className="saveChanges" onClick={() => update()}>Save Changes</button>
+                <button className="saveChanges" data-testid = "saveCourseChanges" onClick={() => update()}>Save Changes</button>
                 <button className="deleteCourse" onClick={() => del()}>Delete Course</button>
             </Modal.Body>
         </Modal>
