@@ -14,24 +14,29 @@ function App(): JSX.Element {
     function addSemester(){
         let yearType = YearType.FirstYear;
         let semesterType = SemesterType.Fall;
-        if(plan.length === 0){
+        if(plan.length - 1 === 0){
             yearType = YearType.FirstYear;
             semesterType = SemesterType.Fall;
-        }else if (plan[plan.length - 1].semester === "Fall") {
-            yearType = plan[plan.length - 1].year;
+        }else if (plan[plan.length - 2].semester === "Fall") {
+            yearType = plan[plan.length - 2].year;
             semesterType = SemesterType.Spring;
         }else{
             semesterType = SemesterType.Fall;
-            if(plan[plan.length - 1].year === "First Year"){
+            if(plan[plan.length - 2].year === "First Year"){
                 yearType = YearType.SecondYear;
-            }else if(plan[plan.length - 1].year === "Second Year"){
+            }else if(plan[plan.length - 2].year === "Second Year"){
                 yearType = YearType.ThirdYear;
-            }else if(plan[plan.length - 1].year === "Third Year"){
+            }else if(plan[plan.length - 2].year === "Third Year"){
                 yearType = YearType.FourthYear;
             }
         }
+        console.log(plan.length);
         const newSemester = {year: yearType, semester: semesterType, courses: []};
-        setPlan([...plan, newSemester]);
+        console.log(newSemester.year);
+        setPlan([...plan.slice(0,-1),
+            newSemester,
+            plan[plan.length - 1]]);
+            
     }
    
     function showAudit():void{
