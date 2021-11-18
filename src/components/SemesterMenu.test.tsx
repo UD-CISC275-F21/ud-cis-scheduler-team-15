@@ -6,7 +6,7 @@ import App from "../App";
 describe("Semester Menu", () => {
     beforeEach(() => {
         render(<App />);
-        const button = screen.getByRole('button', { name: "Close" });
+        const button = screen.getByRole("button", { name: "Close" });
         button.click(); // Closes welcome modal
     });
 
