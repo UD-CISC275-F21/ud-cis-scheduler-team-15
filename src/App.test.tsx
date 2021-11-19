@@ -80,4 +80,5 @@ describe("App", () => {
         const CISC210_violation = screen.getByText("CISC108 is a prerequisite for CISC210");
         checkElements([CISC108_missing, CISC181_violation, CISC210_violation]);
     });
+
 });
