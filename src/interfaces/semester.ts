@@ -5,6 +5,7 @@ export enum YearType {
     SecondYear = "Second Year",
     ThirdYear = "Third Year",
     FourthYear = "Fourth Year",
+    FifthYear = "Fifth Year",
     PoolOfCourses = "Pool of Courses"
 }
 

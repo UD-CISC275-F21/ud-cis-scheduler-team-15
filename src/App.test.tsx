@@ -11,7 +11,14 @@ function openAudit():void{
     const audit_button = screen.getByText("Audit");
     audit_button.click();
 }
-
+function addSemester():void{
+    const addSemesterButton = screen.getByText("Add Semester");
+    addSemesterButton.click();
+}
+//function removeAllSemesters():void{
+//    const removeAllSemestersButton = screen.getByText("Remove All Semesters");
+//    removeAllSemestersButton.click();
+//}
 //Give this an array of elements to see if they are in the doc
 function checkElements(elements: HTMLElement[]):void{
     for (let i=0; i<elements.length; i++){
@@ -80,5 +87,16 @@ describe("App", () => {
         const CISC210_violation = screen.getByText("CISC108 is a prerequisite for CISC210");
         checkElements([CISC108_missing, CISC181_violation, CISC210_violation]);
     });
+    it("Adds a new semester when the add semester button is clicked", () => {
+        renderAndCloseWelcome();
+        addSemester();
+        const fifthYear = screen.getByText("Fifth Year");
+        expect(fifthYear).toBeInTheDocument;
+    });
+    //it("Removes all semesters and only leaves pool of courses when button is clicked"), () => {
+    //    renderAndCloseWelcome();
+    //    removeAllSemesters();
+    //    const First
+    //}
 
 });

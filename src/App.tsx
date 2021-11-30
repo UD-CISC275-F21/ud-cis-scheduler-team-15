@@ -28,6 +28,8 @@ function App(): JSX.Element {
                 yearType = YearType.ThirdYear;
             }else if(plan[plan.length - 2].year === "Third Year"){
                 yearType = YearType.FourthYear;
+            }else if(plan[plan.length - 2].year === "Fourth Year"){
+                yearType = YearType.FifthYear;
             }
         }
         console.log(plan.length);
@@ -75,7 +77,7 @@ function App(): JSX.Element {
     return (
         <div className="App">
             <p>UD CIS Scheduler</p>
-            <Button onClick = {addSemester}>Add Semester</Button>
+            <Button onClick= {addSemester}>Add Semester</Button>
             <Button onClick= {RemoveAllSemesters}>Remove All Semesters</Button>
             <Button onClick= {showAudit}>Audit</Button>
             <Button onClick= {download}>Download</Button>
