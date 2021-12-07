@@ -19,7 +19,7 @@ export function ChangeData({index, sem_index, plan, setPlan, visible, setVisible
     function setCourse(c: Course):void{
         const temp_sem: Semester = plan[sem_index];
         plan[sem_index].courses[index] = c;
-        const temp_plan: Semester[] = plan;
+        const temp_plan: Semester[] = [...plan];
         temp_plan[sem_index] = temp_sem;
         setPlan(temp_plan);
     }
