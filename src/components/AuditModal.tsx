@@ -10,6 +10,7 @@ import Tech from "../assets/Tech.json";
 import COEupper from "../assets/COEupper.json";
 import CISCprereqs from "../assets/CISCprereqs.json";
 import { Prereq } from "../interfaces/prereq";
+import {AuditTable} from "./AuditTable";
 
 export function AuditModal({plan, visible, setVisible}:
     {plan: Semester[];
@@ -247,33 +248,7 @@ export function AuditModal({plan, visible, setVisible}:
                     <strong className="AuditLabel">Core Courses Missing</strong>
                 </div>
                 {missingCore.length?
-                    <Table className="AuditTable" striped={true} bordered>
-                        <thead>
-                            <tr>
-                                <th className="text-center">
-                                    Course Number
-                                </th>
-                                <th className="text-center">
-                                    Course Name
-                                </th>
-                                <th className="text-center">
-                                    Credits
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {missingCore.map((c:Course, index:number) => { 
-                                return (
-                                    <tr key={index}>
-                                        <td className="text-center">{c.number}</td>
-                                        <td className="text-center">{c.name}</td>
-                                        <td className="text-center">{c.credits}</td>
-                                    </tr>
-                                );
-                            }
-                            )}
-                        </tbody>
-                    </Table>: <div className="BasicCenter" data-testid = "noCoreMissing">None</div>
+                    <AuditTable courses = {missingCore}></AuditTable>: <div className="BasicCenter" data-testid = "noCoreMissing">None</div>
                 }
                 <div>
                     <div className="AuditLabel">
@@ -307,33 +282,7 @@ export function AuditModal({plan, visible, setVisible}:
                 <div className="AuditLabel">
                     <strong className="AuditLabel">CISC Electives (18 credits required)</strong>
                 </div>
-                <Table className="AuditTable" striped={true} bordered>
-                    <thead>
-                        <tr>
-                            <th className="text-center">
-                                Course Number
-                            </th>
-                            <th className="text-center">
-                                Course Name
-                            </th>
-                            <th className="text-center">
-                                Credits
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {CISCelectives.map((c:Course, index:number) => { 
-                            return (
-                                <tr key={index}>
-                                    <td className="text-center">{c.number}</td>
-                                    <td className="text-center">{c.name}</td>
-                                    <td className="text-center">{c.credits}</td>
-                                </tr>
-                            );
-                        }
-                        )}
-                    </tbody>
-                </Table>
+                <AuditTable courses={CISCelectives}></AuditTable>
                 <div className="AuditLabel">
                     <strong className="AuditLabel">Breadth Electives</strong>
                 </div>
