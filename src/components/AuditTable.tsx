@@ -20,16 +20,17 @@ export function AuditTable({courses}:
                 </tr>
             </thead>
             <tbody>
-                {courses.map((c:Course, index:number) => { 
-                    return (
-                        <tr key={index}>
-                            <td className="text-center">{c.number}</td>
-                            <td className="text-center">{c.name}</td>
-                            <td className="text-center">{c.credits}</td>
-                        </tr>
-                    );
-                }
-                )}
+                {courses?
+                    courses.map((c:Course, index:number) => { 
+                        return (
+                            <tr key={index}>
+                                <td className="text-center">{c.number}</td>
+                                <td className="text-center">{c.name}</td>
+                                <td className="text-center">{c.credits}</td>
+                            </tr>
+                        );
+                    }
+                    ):<div></div>}
             </tbody>
         </Table>
     );

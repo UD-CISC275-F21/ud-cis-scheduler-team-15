@@ -289,7 +289,6 @@ export function AuditModal({plan, visible, setVisible}:
                 <div className="AuditLabel">
                     <strong className="AuditLabel">Arts and Humanities (3 credits required)</strong>
                 </div>
-                
                 <Table className="AuditTable" striped={true} bordered>
                     <thead>
                         <tr>
