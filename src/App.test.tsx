@@ -103,6 +103,5 @@ describe("App", () => {
         expect(poolOfCourses).toBeInTheDocument();
         expect(firstYear).toBeNull();
     });
-    
-
 });
+ 
