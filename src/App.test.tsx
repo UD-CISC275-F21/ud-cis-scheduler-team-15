@@ -88,7 +88,7 @@ describe("App", () => {
         checkElements([CISC108_missing, CISC181_violation, CISC210_violation]);
     });
 
-    it("Adds a new semester when the add semester button is clicked", () => {
+    it("Adds the correct semester when the add semester button is clicked", () => {
         renderAndCloseWelcome();
         addSemester();
         const fifthYear = screen.getByText("Fifth Year");
@@ -103,6 +103,6 @@ describe("App", () => {
         expect(poolOfCourses).toBeInTheDocument();
         expect(firstYear).toBeNull();
     });
-    it("")
+    
 
 });
