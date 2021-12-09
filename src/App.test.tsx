@@ -99,9 +99,10 @@ describe("App", () => {
         renderAndCloseWelcome();
         removeAllSemesters();
         const poolOfCourses = screen.getByText("Pool of Courses");
-        //const firstYear = screen.getByText("First Year");
+        const firstYear = screen.queryByText("First Year");
         expect(poolOfCourses).toBeInTheDocument();
-        //expect(firstYear).not.toBeInTheDocument();
+        expect(firstYear).toBeNull();
     });
+    it("")
 
 });

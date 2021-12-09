@@ -40,7 +40,6 @@ function App(): JSX.Element {
             plan[plan.length - 1]]);
             
     }
-   
     function showAudit():void{
         setAuditVis(true);
     }
