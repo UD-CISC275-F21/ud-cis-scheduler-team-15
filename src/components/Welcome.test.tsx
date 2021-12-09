@@ -13,6 +13,7 @@ describe("Welcome Modal", () => {
     it("The Welcome Modal closes when the X is clicked", () => {
         const exit_button = screen.getByLabelText("Close");
         exit_button.click();
-        expect("Welcome!").not.toBeInTheDocument();
+        const welcome = screen.queryByText(/Welcome!/);
+        expect(welcome).not.toBeVisible;
     });
 });
