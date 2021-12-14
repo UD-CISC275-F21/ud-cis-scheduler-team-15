@@ -49,6 +49,7 @@ export function ControlPanel({plan, setPlan, setAuditVis}:{plan: Semester[], set
         hiddenElement.download = "Schedule.csv";  
         hiddenElement.click();  
     }
+    //Credit https://www.code-boost.com/react-local-storage/
     useEffect(() => {
         if(sessionStorage.getItem("localplan") != null){
             const json = sessionStorage.getItem("localplan");
